@@ -1,5 +1,5 @@
 
-const Calender = () => {
+const ExpensesCalender = () => {
   return (
     <div className="row px-5 mt-2">
       <div className="col btn rounded-5 me-1 havb" style={{ backgroundColor: '#f6f6f6' }}>
@@ -18,4 +18,4 @@ const Calender = () => {
   );
 };
 
-export default Calender;
+export default ExpensesCalender;

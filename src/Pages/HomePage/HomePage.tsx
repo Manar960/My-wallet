@@ -1,18 +1,19 @@
-import Mobsidebar from '../../layout/components/Aside/Mobsidebar';
+import AppSideBar from '../../layout/components/Aside/AppSideBar';
 import Footer from '../../layout/components/Footer/Footer';
 import Header from '../../layout/components/Header/Header';
 import Balance from './componants/Balance';
 import Barchart from './componants/Barchart';
 import MainActivity from './componants/MainActivity';
-import Thisweek from './componants/Thisweek';
+import ThisWeek from './componants/ThisWeek';
+
 
 const HomePage = () => {
   return (
     <div className="container-fluid mobile px-4 ">
-      <Mobsidebar />
+      <AppSideBar />
       <Header />
       <Balance />
-      <Thisweek />
+      <ThisWeek/>
       <Barchart />
       <MainActivity />
       <Footer />

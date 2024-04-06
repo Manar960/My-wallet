@@ -8,7 +8,7 @@ const Footer = () => {
         <FooterComponent to="/" name={'fas fa-home'} color={''} />
         <FooterComponent to="/address" name={'far fa-address-card'} color={'text-body-secondary'} />
         <FooterComponent
-          to="/monthlyBudget"
+          to="/monthly-Budget"
           name={'fas fa-piggy-bank'}
           color={'text-body-secondary'}
         />

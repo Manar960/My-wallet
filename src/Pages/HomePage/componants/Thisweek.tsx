@@ -1,6 +1,6 @@
 import { IoIosArrowDown } from 'react-icons/io';
 
-const Thisweek = () => {
+const ThisWeek = () => {
   return (
     <article className="this-week ps-3 d-flex justify-content-between mt-4">
       <h6 className="d-flex">
@@ -22,4 +22,4 @@ const Thisweek = () => {
   );
 };
 
-export default Thisweek;
+export default ThisWeek;

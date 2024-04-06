@@ -1,5 +1,5 @@
 
-const Firstarticle = () => {
+const FirstArticle = () => {
   return (
     <article className="first bg-white rounded-4 mt-3 d-flex align-items-center justify-content-center flex-column">
       <h5 className="fw-bold">Total balance</h5>
@@ -16,4 +16,4 @@ const Firstarticle = () => {
   );
 };
 
-export default Firstarticle;
+export default FirstArticle;

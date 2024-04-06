@@ -1,10 +1,10 @@
-import MenuItem from './components/Mitem';
+import MenuItem from './components/MenuItem';
 import ButtomImg from './components/ButImg';
 import '../../../assets/styles/App.css';
 import logo from '../../../assets/images/logo.png';
 import { IoIosClose } from 'react-icons/io';
 
-const Mobsidebar = () => {
+const AppSideBar = () => {
   const items = [
     { icon: '➡️', label: 'Dashboard' },
     { icon: '☰', label: 'Transactions' },
@@ -14,18 +14,19 @@ const Mobsidebar = () => {
     { icon: '☰', label: 'Settings' },
     { icon: '…', label: 'Chat' }
   ];
-  function closeNav() {
+
+  const closeNav = () => {
     const element = document.getElementById('mySidenav');
     if (element) {
       element.style.width = '0';
     }
-  }
+  };
 
   return (
     <div id="mySidenav" className="sidenav">
       <aside className="sidebar position-relative d-flex align-items-start rounded-4 flex-column">
         <div className="header ps-3 mt-3">
-          <img src={logo} />
+          <img src={logo} alt="Logo" />
           <span className="description-header fw-bold">Finarium</span>
           <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>
             <IoIosClose />
@@ -42,4 +43,4 @@ const Mobsidebar = () => {
   );
 };
 
-export default Mobsidebar;
+export default AppSideBar;

@@ -1,4 +1,3 @@
-import Footer from "../../layout/components/Footer/Footer";
 import Budget from "./componants/Budget";
 import Expenses from "./componants/Expenses/Expenses";
 import Header from "./componants/Header";
@@ -9,7 +8,6 @@ const MonthlyBudget = () => {
       <Header />
       <Budget />
       <Expenses />
-      <Footer />
     </div>
   );
 }

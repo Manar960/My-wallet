@@ -1,4 +1,4 @@
-function Excard(props: { name: string; color: string; amount: string ,icon:string}) {
+function ExpensesCards(props: { name: string; color: string; amount: string ,icon:string}) {
   return (
     <div className="col mx-2" style={{ backgroundColor: props.color, borderRadius: '20px' }}>
       <p className="text-start my-5 rounded-5 row mt-4">
@@ -9,4 +9,4 @@ function Excard(props: { name: string; color: string; amount: string ,icon:strin
     </div>
   );
 }
-export default Excard;
+export default ExpensesCards;

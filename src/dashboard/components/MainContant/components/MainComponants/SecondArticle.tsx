@@ -1,6 +1,5 @@
-import DonutChart from "../../../DonatChart";
 
-const Secarticle = () => {
+const SecondArticle = () => {
   return (
     <article className="second bg-white rounded-4 mt-3">
       <div className="expenses">
@@ -8,9 +7,8 @@ const Secarticle = () => {
           Expenses <span>&#8229;</span>
         </h5>
       </div>
-    {/* <DonutChart/> */}
     </article>
   );
 };
 
-export default Secarticle;
+export default SecondArticle;

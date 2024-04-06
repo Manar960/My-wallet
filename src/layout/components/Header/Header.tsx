@@ -1,13 +1,13 @@
-import '../../../assets/styles/App.css'
+import '../../../assets/styles/App.css';
 import { HiMiniBars2 } from 'react-icons/hi2';
 
 const Header = () => {
-  function openNav() {
+  const openNav = () => {
     const element = document.getElementById('mySidenav');
     if (element) {
-      element.style.width = '250px'; 
+      element.style.width = '250px';
     }
-  }
+  };
 
   return (
     <header className="mobile-header profile-img mt-3 d-flex justify-content-between align-items-center">

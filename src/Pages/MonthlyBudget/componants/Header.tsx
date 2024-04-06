@@ -1,6 +1,6 @@
 
 const Header = () => {
-  const handleClick = () => {
+  const goBack = () => {
     window.history.back(); 
   };
   return (
@@ -9,7 +9,7 @@ const Header = () => {
         id="backIcon"
         className="fas fa-angle-left"
         style={{ fontSize: '25px', cursor: 'pointer' }}
-        onClick={handleClick}></i>
+        onClick={goBack}></i>
 
       <h5 className="mb-0 fw-bold">Monthly Budget</h5>
       <input

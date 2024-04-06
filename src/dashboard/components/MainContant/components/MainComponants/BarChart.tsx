@@ -1,4 +1,4 @@
-const Chart = () => {
+const BarChart = () => {
   return (
     <div className="container-fluid">
       <div className="row">
@@ -12,4 +12,4 @@ const Chart = () => {
   );
 };
 
-export default Chart;
+export default BarChart;

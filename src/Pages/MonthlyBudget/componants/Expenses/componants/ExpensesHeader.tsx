@@ -1,5 +1,5 @@
 
-const EXheader = () => {
+const ExpensesHeader = () => {
   return (
     <header className="d-flex justify-content-between p-4">
       <h3>Expenses</h3>
@@ -13,4 +13,4 @@ const EXheader = () => {
   );
 };
 
-export default EXheader;
+export default ExpensesHeader;

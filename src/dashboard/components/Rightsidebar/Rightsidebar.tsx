@@ -1,10 +1,9 @@
-import React from 'react';
 import Profile from './components/Profile';
 import YourCard from './components/YourCard';
 import Receivers from './components/Receivers';
 import RecentActivity from './components/RecentActivity';
 
-const Secsidebar = () => {
+const Rightsidebar = () => {
   return (
     <aside className="second-sidebar">
       <Profile />
@@ -17,4 +16,4 @@ const Secsidebar = () => {
   );
 };
 
-export default Secsidebar;
+export default Rightsidebar;

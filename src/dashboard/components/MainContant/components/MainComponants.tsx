@@ -1,6 +1,7 @@
-import Chart from "./MainCom/Chart";
-import Firstarticle from "./MainCom/Firstarticle";
-import Secarticle from "./MainCom/Secarticle";
+import BarChart from "./MainComponants/BarChart";
+import FirstArticle from "./MainComponants/FirstArticle";
+import SecondArticle from "./MainComponants/SecondArticle";
+
 
 const Main = () => {
   return (
@@ -8,14 +9,14 @@ const Main = () => {
       <div className="container-fluid">
         <div className="row cal justify-content-between d-flex pe-4">
           <div className="col-lg-6">
-          <Firstarticle/>
+          <FirstArticle/>
           </div>
           <div className="col-lg-6">
-            <Secarticle/>
+            <SecondArticle/>
           </div>
         </div>
       </div>
-      <Chart/>
+      <BarChart/>
     </main>
   );
 };
