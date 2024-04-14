@@ -1,6 +1,6 @@
-import Budget from "./componants/Budget";
-import Expenses from "./componants/Expenses/Expenses";
-import Header from "./componants/Header";
+import Budget from './componants/Budget';
+import Expenses from './componants/Expenses/Expenses';
+import Header from './componants/Header';
 
 const MonthlyBudget = () => {
   return (
@@ -10,6 +10,6 @@ const MonthlyBudget = () => {
       <Expenses />
     </div>
   );
-}
+};
 
-export default MonthlyBudget
+export default MonthlyBudget;

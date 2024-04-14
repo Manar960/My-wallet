@@ -1,7 +1,6 @@
 import MenuItem from './components/MenuItem';
-import ButtomImg from './components/buttomImg';
-import '../../../assets/styles/App.css';
 import logo from '../../../assets/images/logo.png';
+import ButtomImg from './components/ButtomImg';
 const Sidebar = () => {
   const items = [
     { icon: '➡️', label: 'Dashboard' },

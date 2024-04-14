@@ -10,7 +10,7 @@ const Expenses = () => {
       style={{ borderTopLeftRadius: '20px', borderTopRightRadius: '20px' }}>
       <EXheader />
       <ExpensesCalender />
-      <div className="row mx-2 mt-4">
+      <div className="row mx-2 mt-4 mb-4">
         <ExpensesCards
           name={'Groceries'}
           color={'#2c5fcc'}

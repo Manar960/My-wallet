@@ -1,10 +1,10 @@
 import MainContant from './components/MainContant/MainContant';
 import Secsidebar from './components/Rightsidebar/Rightsidebar';
 import Sidebar from './components/Sidebar/Sidebar';
-
+import '../assets/styles/App/App.css'
 const Dashboard = () => {
   return (
-    <div className="container-fluid d-none d-sm-block">
+    <div className="container-fluid ">
       <div className="row h-100">
         <div className="col-lg-2 col-sm-3">
           <Sidebar />

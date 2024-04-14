@@ -1,7 +1,7 @@
 import ActivityItem from './ActivityItem ';
 const MainActivity = () => {
   return (
-    <>
+    <div className='mb-5'>
       <h6 style={{color: "#b5c1ce"}}>Today</h6>
       <ActivityItem
         name='Supermarket'
@@ -17,7 +17,7 @@ const MainActivity = () => {
         amount='12.45'
         icon='fab fa-google'
       />
-    </>
+    </div>
   );
 };
 

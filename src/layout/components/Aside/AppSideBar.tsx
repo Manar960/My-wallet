@@ -1,6 +1,5 @@
 import MenuItem from './components/MenuItem';
 import ButtomImg from './components/ButImg';
-import '../../../assets/styles/App.css';
 import logo from '../../../assets/images/logo.png';
 import { IoIosClose } from 'react-icons/io';
 
