@@ -8,10 +8,18 @@ import { PageNotFound } from './Pages/PageNotFound';
 import MonthlyBudget from './Pages/MonthlyBudget/MonthlyBudget';
 import LoginPage from './Pages/LoginPage/LoginPage';
 import { UsernameProvider } from './context/app-store';
+import Dashboard from './dashboard/Dashboard';
+import TransactionsPage from './dashboard/DashPages/Transaction/TransactionsPage';
+import DashboardLayout from './dashboard/DashboardLayout';
+import PrivateRoute from './PrivateRoute';
 const routers = createBrowserRouter([
   {
     path: '/',
-    element: <MasterLayout />,
+    element: (
+      <PrivateRoute>
+        <MasterLayout />
+      </PrivateRoute>
+    ),
     children: [
       {
         index: true,
@@ -20,6 +28,20 @@ const routers = createBrowserRouter([
       {
         path: '/monthly-Budget',
         element: <MonthlyBudget />
+      },
+      {
+        path: 'dashboard/',
+        element: <DashboardLayout />,
+        children: [
+          {
+            index: true,
+            element: <Dashboard />
+          },
+          {
+            path: 'transaction',
+            element: <TransactionsPage />
+          }
+        ]
       }
     ]
   },

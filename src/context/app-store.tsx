@@ -1,14 +1,14 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
-interface UsernameContextType {
+interface AppContextType {
   username: string;
   setUsername: (username: string) => void;
 }
 
-const UsernameContext = createContext<UsernameContextType | undefined>(undefined);
+const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const useUsername = () => {
-  const context = useContext(UsernameContext);
+  const context = useContext(AppContext);
   if (!context) {
     throw new Error('useUsername must be used within a UsernameProvider');
   }
@@ -23,8 +23,8 @@ export const UsernameProvider: React.FC<UsernameProviderProps> = ({ children }) 
   const [username, setUsername] = useState('');
 
   return (
-    <UsernameContext.Provider value={{ username, setUsername }}>
+    <AppContext.Provider value={{ username, setUsername }}>
       {children}
-    </UsernameContext.Provider>
+    </AppContext.Provider>
   );
 };

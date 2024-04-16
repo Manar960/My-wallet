@@ -7,7 +7,7 @@ import ThisWeek from './componants/ThisWeek';
 
 const HomePage = () => {
   return (
-      <div className="container-fluid mobile px-4">
+      <div className=" mobile px-4">
         <AppSideBar />
         <Header />
         <Balance />

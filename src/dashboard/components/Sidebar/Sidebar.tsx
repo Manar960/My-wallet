@@ -3,8 +3,8 @@ import logo from '../../../assets/images/logo.png';
 import ButtomImg from './components/ButtomImg';
 const Sidebar = () => {
   const items = [
-    { icon: '➡️', label: 'Dashboard' },
-    { icon: '☰', label: 'Transactions' },
+    { icon: '➡️', label: 'Dashboard', to: '/dashboard' },
+    { icon: '☰', label: 'Transactions', to: '/dashboard/transactions' },
     { icon: '⬆️', label: 'Cards' },
     { icon: '☰', label: 'Reports' },
     { icon: '…', label: 'Calendar' },
@@ -19,7 +19,7 @@ const Sidebar = () => {
       </div>
       <main className="first-header">
         {items.map((item, index) => (
-          <MenuItem key={index} icon={item.icon} name={item.label} />
+          <MenuItem key={index} icon={item.icon} name={item.label} to={''} />
         ))}
       </main>
       <ButtomImg />

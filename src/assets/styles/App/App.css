@@ -6,6 +6,7 @@
 }
 
 body {
+  min-height: 100vh;
   background-color: #fcfbfe;
 }
 
@@ -98,6 +99,14 @@ body {
   font-weight: bold;
   font-size: 15px;
   color: #1dc681;
+}
+
+input[type=date] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #f7ebfe;
 }
 
 .second .expenses h5 {
