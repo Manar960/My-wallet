@@ -7,7 +7,7 @@ interface AppContextType {
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
-export const useUsername = () => {
+export const useAppStore = () => {
   const context = useContext(AppContext);
   if (!context) {
     throw new Error('useUsername must be used within a UsernameProvider');
@@ -15,11 +15,11 @@ export const useUsername = () => {
   return context;
 };
 
-interface UsernameProviderProps {
+interface AppStoreProviderProps {
   children: ReactNode;
 }
 
-export const UsernameProvider: React.FC<UsernameProviderProps> = ({ children }) => {
+export const AppStoreProvider: React.FC<AppStoreProviderProps> = ({ children }) => {
   const [username, setUsername] = useState('');
 
   return (

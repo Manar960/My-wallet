@@ -5,9 +5,9 @@ interface DateState {
   setSelectedDate: (date: string | null) => void;
 }
 
-const useDateStore = create<DateState>((set) => ({
+const dashboardStore  = create<DateState>((set) => ({
   selectedDate: null,
   setSelectedDate: (date) => set({ selectedDate: date })
 }));
 
-export default useDateStore;
+export default dashboardStore ;

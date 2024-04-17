@@ -5,13 +5,13 @@ import { IoIosClose } from 'react-icons/io';
 
 const AppSideBar = () => {
   const items = [
-    { icon: '➡️', label: 'Dashboard' },
-    { icon: '☰', label: 'Transactions' },
-    { icon: '⬆️', label: 'Cards' },
-    { icon: '☰', label: 'Reports' },
-    { icon: '…', label: 'Calendar' },
-    { icon: '☰', label: 'Settings' },
-    { icon: '…', label: 'Chat' }
+    { icon: '➡️', label: 'Dashboard', to: '/dashboard' },
+    { icon: '☰', label: 'Transactions', to: '/transaction' },
+    { icon: '⬆️', label: 'Cards', to: '#' },
+    { icon: '☰', label: 'Reports', to: '#' },
+    { icon: '…', label: 'Calendar', to: '#' },
+    { icon: '☰', label: 'Settings', to: '#' },
+    { icon: '…', label: 'Chat', to: '#' }
   ];
 
   const closeNav = () => {
@@ -33,7 +33,7 @@ const AppSideBar = () => {
         </div>
         <main className="first-header">
           {items.map((item, index) => (
-            <MenuItem key={index} icon={item.icon} name={item.label} />
+            <MenuItem key={index} icon={item.icon} name={item.label} to={item.to}  />
           ))}
         </main>
         <ButtomImg />

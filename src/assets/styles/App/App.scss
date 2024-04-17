@@ -147,7 +147,7 @@ input[type="date"] {
       font-size: 12px;
     }
   }
-}
+} 
 .column-container {
   height: 92%;
   margin-right: 25px;
@@ -231,9 +231,7 @@ input[type="date"] {
   height: 50px;
 }
 @media only screen and (max-width: 936px) {
-  .header-item-label {
-    display: none;
-  }
+ 
   .header-item {
     & .square {
       margin-left: 30px;

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { LuInstagram } from 'react-icons/lu';
 import { FaFacebook, FaSquareXTwitter } from 'react-icons/fa6';
-import { useUsername } from '../../../context/app-store';
+import { useAppStore } from '../../../context/app-store';
 import { useNavigate } from 'react-router-dom';
 const Signin = () => {
-  const { setUsername } = useUsername();
+  const { setUsername } = useAppStore();
   const [errorMessage, setErrorMessage] = useState<string>('');
   const navigate = useNavigate();
   const handleSignIn = (e: React.FormEvent<HTMLFormElement>) => {
