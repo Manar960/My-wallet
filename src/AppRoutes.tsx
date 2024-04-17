@@ -7,18 +7,15 @@ import MasterLayout from './layout/MasterLayout';
 import { PageNotFound } from './Pages/PageNotFound';
 import MonthlyBudget from './Pages/MonthlyBudget/MonthlyBudget';
 import LoginPage from './Pages/LoginPage/LoginPage';
-import { UsernameProvider } from './context/app-store';
 import Dashboard from './dashboard/Dashboard';
-import TransactionsPage from './dashboard/DashPages/Transaction/TransactionsPage';
-import DashboardLayout from './dashboard/DashboardLayout';
 import PrivateRoute from './PrivateRoute';
+import { AppStoreProvider } from './context/app-store';
+import TransactionsPage from './dashboard/DashPages/Transaction/TransactionsPage';
 const routers = createBrowserRouter([
   {
     path: '/',
     element: (
-      <PrivateRoute>
         <MasterLayout />
-      </PrivateRoute>
     ),
     children: [
       {
@@ -30,19 +27,14 @@ const routers = createBrowserRouter([
         element: <MonthlyBudget />
       },
       {
-        path: 'dashboard/',
-        element: <DashboardLayout />,
-        children: [
-          {
-            index: true,
-            element: <Dashboard />
-          },
-          {
-            path: 'transaction',
-            element: <TransactionsPage />
-          }
-        ]
-      }
+        path: '/dashboard',
+        element: <Dashboard />
+      },
+      {
+        path: '/transaction',
+        element: <TransactionsPage />
+      },
+    
     ]
   },
   { path: '*', element: <PageNotFound /> },
@@ -51,9 +43,9 @@ const routers = createBrowserRouter([
 
 const AppRoutes = () => {
   return (
-    <UsernameProvider>
+    <AppStoreProvider>
       <RouterProvider router={routers} />
-    </UsernameProvider>
+    </AppStoreProvider>
   );
 };
 

@@ -1,9 +1,9 @@
 import dayjs from 'dayjs';
 import img from '../../../../../assets/images/bar.png';
-import useDateStore from '../../../../../context/date-store';
+import dashboardStore from '../../../../../context/dashboardStore';
 const BarChart = () => {
-    const selectedDate = useDateStore((state) => state.selectedDate);
-    const formattedDate = dayjs(selectedDate).format('MM/DD/YYYY');
+  const selectedDate = dashboardStore((state) => state.selectedDate);
+  const formattedDate = dayjs(selectedDate).format('MM/DD/YYYY');
 
   return (
     <div className="container-fluid">

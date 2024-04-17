@@ -1,13 +1,12 @@
-import useDateStore from '../../../../context/date-store'; 
+import useDateStore from '../../../../context/dashboardStore';
 
 const Header = () => {
   const setDate = useDateStore((state) => state.setSelectedDate);
 
- const handleDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-   const selectedDate = event.target.value;
-   setDate(selectedDate);
- };
-
+  const handleDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedDate = event.target.value;
+    setDate(selectedDate);
+  };
 
   return (
     <header>
