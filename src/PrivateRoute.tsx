@@ -1,16 +1,18 @@
-import React, { ReactNode } from 'react';
-import { Navigate } from 'react-router-dom';
-import { useAppStore } from './context/app-store';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import MasterLayout from './layout/MasterLayout';
+import Dashboard from './dashboard/Dashboard';
+import TransactionsPage from './dashboard/DashPages/Transaction/TransactionsPage';
 
-interface PrivateRouteProps {
-  children: ReactNode;
-}
-const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
-  const { username } = useAppStore();
-  if (!username) {
-    return <Navigate to="/login" />;
-  }
-  return <>{children}</>;
+const PrivateRoute = () => {
+  return (
+    <Routes>
+      <Route element={<MasterLayout />}>
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="transaction" element={<TransactionsPage />} />
+        <Route path="*" element={<Navigate to="/dashboard" />} />
+      </Route>
+    </Routes>
+  );
 };
 
 export default PrivateRoute;
