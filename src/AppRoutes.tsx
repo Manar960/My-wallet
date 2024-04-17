@@ -1,7 +1,4 @@
-import {
-  RouterProvider,
-  createBrowserRouter,
-} from 'react-router-dom';
+import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import HomePage from './Pages/HomePage/HomePage';
 import MasterLayout from './layout/MasterLayout';
 import { PageNotFound } from './Pages/PageNotFound';
@@ -20,13 +17,9 @@ const routers = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
+      { path: '', element: <Navigate to="/dashboard" /> },
       {
-        index: true,
         element: <HomePage />
-      },
-      {
-        path: '/monthly-Budget',
-        element: <MonthlyBudget />
       },
       {
         path: '/dashboard',
@@ -35,6 +28,10 @@ const routers = createBrowserRouter([
       {
         path: '/transaction',
         element: <TransactionsPage />
+      },
+      {
+        path: '/monthly-Budget',
+        element: <MonthlyBudget />
       }
     ]
   },

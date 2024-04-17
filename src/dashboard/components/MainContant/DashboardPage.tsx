@@ -2,7 +2,7 @@ import Header from './components/Header';
 import Menu from './components/Menu';
 import Main from './components/MainComponants';
 
-const MainContant = () => {
+const DashboardPage = () => {
   return (
     <div>
       <Header />
@@ -12,4 +12,4 @@ const MainContant = () => {
   );
 };
 
-export default MainContant;
+export default DashboardPage;
