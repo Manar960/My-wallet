@@ -33,8 +33,7 @@ const routers = createBrowserRouter([
       {
         path: '/transaction',
         element: <TransactionsPage />
-      },
-    
+      }
     ]
   },
   { path: '*', element: <PageNotFound /> },

@@ -216,9 +216,6 @@ input[type=date] {
 }
 
 @media only screen and (max-width: 936px) {
-  .header-item-label {
-    display: none;
-  }
   .header-item .square {
     margin-left: 30px;
     padding: 15px;
