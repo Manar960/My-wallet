@@ -6,10 +6,14 @@ import Sidebar from '../dashboard/components/Sidebar/Sidebar';
 const MasterLayout = () => {
   return (
     <>
-      <div className="d-flex h-100">
+      <div
+        className="d-flex h-100"
+        style={{
+          backgroundColor: '#f7ebfe',
+          minHeight: '100vh'
+        }}>
         <Sidebar />
-
-        <div className="container-fluid " style={{ backgroundColor: '#f7ebfe' }}>
+        <div>
           <Outlet />
         </div>
       </div>

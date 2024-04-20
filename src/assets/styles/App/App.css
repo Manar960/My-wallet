@@ -6,14 +6,12 @@
 }
 
 body {
-  min-height: 100vh;
   background-color: #fcfbfe;
 }
 
 .sidebar {
-  height: 98%;
+  width: 251px;
 }
-
 .sidebar .header img {
   width: 30px;
   height: 30px;

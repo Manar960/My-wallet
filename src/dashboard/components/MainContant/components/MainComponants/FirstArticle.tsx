@@ -1,7 +1,7 @@
 
 const FirstArticle = () => {
   return (
-    <article className="first bg-white rounded-4 mt-3 d-flex align-items-center justify-content-center flex-column">
+    <article className="first bg-white rounded-4 mt-3 d-flex align-items-center justify-content-center flex-column shadow-sm">
       <h5 className="fw-bold">Total balance</h5>
       <div className="total d-flex">
         <h6 className="fw-bold">$</h6>

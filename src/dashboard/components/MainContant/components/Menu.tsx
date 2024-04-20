@@ -14,7 +14,7 @@ const Menu: React.FC = () => {
   ];
 
   return (
-    <nav className="menu bg-white d-flex">
+    <nav className="menu bg-white d-flex shadow-sm">
       {menuItems.map((item, index) => (
         <a
           key={index}

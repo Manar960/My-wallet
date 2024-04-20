@@ -1,15 +1,14 @@
 import DashboardPage from './components/MainContant/DashboardPage';
-import Secsidebar from './components/Rightsidebar/Rightsidebar';
-import Sidebar from './components/Sidebar/Sidebar';
+import Rightsidebar from './components/Rightsidebar/Rightsidebar';
 import '../assets/styles/App/App.css';
 const Dashboard = () => {
   return (
-    <div className="d-flex">
+    <div className="d-flex ">
       <div>
         <DashboardPage />
       </div>
-      <div>
-        <Secsidebar />
+      <div className=' bg-white'>
+        <Rightsidebar />
       </div>
     </div>
   );

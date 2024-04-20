@@ -12,7 +12,7 @@ const Sidebar = () => {
     { icon: '…', label: 'Chat', to: '#' }
   ];
   return (
-    <aside className="sidebar bg-white position-relative d-flex align-items-start rounded-4 m-2 flex-column pe-4">
+    <aside className="sidebar bg-white position-relative d-flex align-items-start rounded-4 m-2 flex-column pe-4 shadow-sm">
       <div className="header ps-3 mt-3">
         <img src={logo} alt="" />
         <span className="description-header fw-bold">Finarium</span>

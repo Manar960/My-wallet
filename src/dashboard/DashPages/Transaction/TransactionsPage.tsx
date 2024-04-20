@@ -1,4 +1,3 @@
-import Sidebar from '../../components/Sidebar/Sidebar';
 import TransactionsList from './TransactionsList';
 
 const TransactionsPage = () => {
