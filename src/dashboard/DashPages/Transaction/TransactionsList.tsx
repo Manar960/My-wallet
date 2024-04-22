@@ -8,6 +8,7 @@ import { Column } from 'primereact/column';
 import 'primereact/resources/primereact.min.css';
 import 'primereact/resources/themes/lara-light-green/theme.css';
 import 'primeicons/primeicons.css';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const API_URL = 'https://mocki.io/v1/8b489a5a-617e-45d5-8ec8-284cee710485';
 
@@ -34,7 +35,11 @@ const TransactionsList = () => {
         setLoading(false);
       });
   }, [setData, setLoading, setError]);
+  const navigate = useNavigate();
 
+  const handleClick = () => {
+    navigate('/transaction/new'); 
+  };
   if (loading) return <div>Loading...</div>;
 
   if (error) return <div>{error}</div>;
@@ -68,6 +73,16 @@ const TransactionsList = () => {
           )}></Column>
         <Column field="amount" header="Amount" className="py-1 "></Column>
       </DataTable>
+      <div className="d-flex align-items-center justify-content-end me-4">
+        <button
+          className="button d-inline-flex align-items-center justify-content-center mt-4"
+          onClick={handleClick}>
+          Add New Transaction
+          <div className="hoverEffect position-absolute d-flex align-items-center justify-content-center">
+            <div></div>
+          </div>
+        </button>
+      </div>
     </div>
   );
 };

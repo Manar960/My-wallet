@@ -7,7 +7,7 @@ const Header = () => {
 
   useEffect(() => {
     setDate(selectedDate);
-  }, []); 
+  }, []);
 
   const handleDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newDate = event.target.value;
@@ -27,6 +27,13 @@ const Header = () => {
             name="dateFilter"
             value={selectedDate}
             onChange={handleDateChange}
+            style={{
+              padding: '8px',
+              border: '1px solid #ccc',
+              borderRadius: '4px',
+              fontSize: '17px',
+              backgroundColor: '#f7ebfe'
+            }}
           />
         </h6>
       </div>

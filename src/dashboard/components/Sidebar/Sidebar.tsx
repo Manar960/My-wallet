@@ -1,19 +1,28 @@
 import MenuItem from './components/MenuItem';
 import logo from '../../../assets/images/logo.png';
 import ButtomImg from '../../../layout/components/Aside/components/ButImg';
+import { BiTransferAlt } from 'react-icons/bi';
+import { HiOutlineCreditCard } from 'react-icons/hi';
+import { HiOutlineDocumentText } from 'react-icons/hi';
+import { HiOutlineCalendar } from 'react-icons/hi';
+import { MdInsertChartOutlined } from 'react-icons/md';
+import { PiChatCircleDots } from 'react-icons/pi';
+import { TbSettingsExclamation } from 'react-icons/tb';
+
+
 const Sidebar = () => {
   const items = [
-    { icon: '➡️', label: 'Dashboard', to: '/dashboard' },
-    { icon: '☰', label: 'Transactions', to: '/transaction' },
-    { icon: '⬆️', label: 'Cards', to: '#' },
-    { icon: '☰', label: 'Reports', to: '#' },
-    { icon: '…', label: 'Calendar', to: '#' },
-    { icon: '☰', label: 'Settings', to: '#' },
-    { icon: '…', label: 'Chat', to: '#' }
+    { icon: <MdInsertChartOutlined />, label: 'Dashboard', to: '/dashboard' },
+    { icon: <BiTransferAlt />, label: 'Transactions', to: '/transaction' },
+    { icon: <HiOutlineCreditCard />, label: 'Cards', to: '#' },
+    { icon: <HiOutlineDocumentText />, label: 'Reports', to: '#' },
+    { icon: <HiOutlineCalendar />, label: 'Calendar', to: '#' },
+    { icon: <TbSettingsExclamation />, label: 'Settings', to: '#' },
+    { icon: <PiChatCircleDots />, label: 'Chat', to: '#' }
   ];
   return (
     <aside className="sidebar bg-white position-relative d-flex align-items-start rounded-4 m-2 flex-column pe-4 shadow-sm">
-      <div className="header ps-3 mt-3">
+      <div className="header ps-4 my-3">
         <img src={logo} alt="" />
         <span className="description-header fw-bold">Finarium</span>
       </div>
