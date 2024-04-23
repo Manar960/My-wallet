@@ -1,11 +1,8 @@
 import * as Yup from 'yup';
 
 export const TransactionSchema = Yup.object({
-  name: Yup.string().required('Name is required'),
+  name: Yup.string().required('Name is required').min(3, 'Name must be at least 3 characters'),
   category: Yup.string().required('Category is required'),
   date: Yup.string().required('Date is required'),
-  amount: Yup.number()
-    .required('Amount is required')
-    .positive('Amount must be positive')
-    .integer('Amount must be an integer')
+  amount: Yup.number().required('Amount is required').positive('Amount must be positive')
 });
