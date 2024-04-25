@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useEffect } from 'react';
 import dayjs from 'dayjs';
 import { useTransactionsStore } from '../../../context/transactionsStore';
@@ -9,36 +8,30 @@ import 'primereact/resources/primereact.min.css';
 import 'primereact/resources/themes/lara-light-green/theme.css';
 import 'primeicons/primeicons.css';
 import { Navigate, useNavigate } from 'react-router-dom';
-
-const API_URL = 'https://mocki.io/v1/8b489a5a-617e-45d5-8ec8-284cee710485';
+import TransactionService from '../../transactions-api';
 
 const TransactionsList = () => {
   const { data, loading, error, setData, setLoading, setError } = useTransactionsStore();
 
   useEffect(() => {
     setLoading(true);
-    axios
-      .get<UserData[]>(API_URL)
-      .then((res) => {
-        setData(res.data);
-      })
-      .catch((err) => {
-        let errorMessage = 'An error occurred';
-        if (err.response) {
-          errorMessage = `Error: ${err.response.status} - ${err.response.statusText}`;
-        } else if (err.request) {
-          errorMessage = 'Network error, please try again later';
-        }
-        setError(errorMessage);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    try {
+      const transactions = TransactionService.getAllTransactions();
+      setData(transactions);
+      setLoading(false);
+    } catch (err) {
+      setError('An error occurred while fetching data from LocalStorage');
+      setLoading(false);
+    }
   }, [setData, setLoading, setError]);
   const navigate = useNavigate();
-
   const handleClick = () => {
-    navigate('/transaction/new'); 
+    navigate('/transaction/new');
+  };
+  const Removerecord = (transactionId: number) => {
+    TransactionService.removeTransaction(transactionId);
+    const updatedData = data.filter((transaction) => transaction.id !== transactionId);
+    setData(updatedData);
   };
   if (loading) return <div>Loading...</div>;
 
@@ -71,7 +64,15 @@ const TransactionsList = () => {
           body={(rowData) => (
             <span>{dayjs(rowData.date).format('DD/MM/YYYY HH:mm:ss')}</span>
           )}></Column>
-        <Column field="amount" header="Amount" className="py-1 "></Column>
+        <Column field="amount" header="Amount" className="py-3"></Column>
+        <Column
+          field="id"
+          body={(rowData) => (
+            <button className="button2 p-button-danger " onClick={() => Removerecord(rowData.id)}>
+              Remove
+            </button>
+          )}
+        />
       </DataTable>
       <div className="d-flex align-items-center justify-content-end me-4">
         <button

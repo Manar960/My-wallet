@@ -28,6 +28,7 @@ body {
     }
   }
 }
+
 .header-item {
   text-decoration: none;
   color: $color-text;
@@ -35,7 +36,6 @@ body {
   &:hover {
     span {
       color: $color-primary;
-    
     }
     .header-item-label {
       color: $color-text-hover;
@@ -314,13 +314,26 @@ footer {
   z-index: 0;
   box-shadow: 0 0px 7px -5px rgba(0, 0, 0, 0.5);
 }
-
-.button:hover {
+.button2 {
+  width: 100px;
+  padding: 10px;
+  border: 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10rem;
+  transition: all 0.02s;
+  font-weight: bold;
+  color: rgb(37, 3, 91);
+  box-shadow: 0 0px 7px -5px rgba(0, 0, 0, 0.5);
+}
+.button:hover,
+.button2:hover {
   background: rgb(193, 228, 248);
   color: rgb(37, 3, 91);
 }
 
-.button:active {
+.button:active,
+.button2:active {
   transform: scale(0.97);
 }
 
@@ -334,12 +347,7 @@ footer {
 
 .hoverEffect div {
   background: rgb(107, 13, 45);
-  background: linear-gradient(
-    90deg,
-    rgb(193, 228, 248) 0%,
-    #d182eb 50%,
-    #8983fa 100%
-  );
+  background: linear-gradient(90deg, rgb(193, 228, 248) 0%, #d182eb 50%, #8983fa 100%);
   border-radius: 40rem;
   width: 15rem;
   height: 12rem;
@@ -397,13 +405,13 @@ footer {
       border-radius: 15px;
       margin-bottom: 0;
     }
-    span {
+    .errorMsg {
       color: red;
       font-size: 0.8rem;
       margin-left: 8px;
       margin-bottom: 0;
     }
-    .felid{
+    .felid {
       margin-bottom: 27px;
     }
   }

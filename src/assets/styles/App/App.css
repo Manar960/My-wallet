@@ -302,12 +302,27 @@ footer {
   box-shadow: 0 0px 7px -5px rgba(0, 0, 0, 0.5);
 }
 
-.button:hover {
+.button2 {
+  width: 100px;
+  padding: 10px;
+  border: 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10rem;
+  transition: all 0.02s;
+  font-weight: bold;
+  color: rgb(37, 3, 91);
+  box-shadow: 0 0px 7px -5px rgba(0, 0, 0, 0.5);
+}
+
+.button:hover,
+.button2:hover {
   background: rgb(193, 228, 248);
   color: rgb(37, 3, 91);
 }
 
-.button:active {
+.button:active,
+.button2:active {
   transform: scale(0.97);
 }
 
@@ -381,7 +396,7 @@ footer {
   border-radius: 15px;
   margin-bottom: 0;
 }
-.transaction .main span {
+.transaction .main .errorMsg {
   color: red;
   font-size: 0.8rem;
   margin-left: 8px;

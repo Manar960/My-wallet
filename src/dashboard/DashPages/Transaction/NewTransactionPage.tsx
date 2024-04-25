@@ -2,6 +2,14 @@ import { useFormik } from 'formik';
 import { BiSolidMessageSquareAdd } from 'react-icons/bi';
 import { TransactionSchema } from '../../../context/Transaction';
 import TransactionService from '../../transactions-api';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Calendar } from 'primereact/calendar';
+import { InputText } from 'primereact/inputtext';
+import { Dropdown } from 'primereact/dropdown';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
+
 const TransactionValue = {
   id: 0,
   name: '',
@@ -24,6 +32,9 @@ const NewTransactionPage = () => {
       formik.resetForm();
     }
   });
+  const isSubmitDisabled = !formik.dirty || !formik.isValid;
+  const SuccessAdding = () => toast.success('Added Successfully');
+  const categories = ['Supermarket', 'Personal', 'Home', 'Entertainment'];
 
   return (
     <div className="tran d-inline-flex container-fluid">
@@ -33,7 +44,7 @@ const NewTransactionPage = () => {
         </div>
         <div className="main">
           <div className="felid d-flex flex-column">
-            <input
+            <InputText
               type="text"
               id="name"
               name="name"
@@ -42,43 +53,60 @@ const NewTransactionPage = () => {
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
             />
-            <span>{formik.errors.name && <small>{formik.errors.name}</small>}</span>
+            <span className="errorMsg">
+              {formik.errors.name && <small>{formik.errors.name}</small>}
+            </span>
           </div>
           <div className="felid d-flex flex-column">
-            <input
-              type="text"
+            <Dropdown
               id="category"
               name="category"
               placeholder="Category"
               value={formik.values.category}
+              options={categories.map((category) => ({ label: category, value: category }))}
+              onChange={(e) => formik.setFieldValue('category', e.value)}
               onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
+              style={{
+                height: '47px',
+                borderRadius: '15px',
+                alignItems: 'center',
+                backgroundColor: '#e6f9f1',
+                paddingLeft: '10px'
+              }}
             />
-            <span>{formik.errors.category && <small>{formik.errors.category}</small>}</span>
+            <span className="errorMsg">
+              {formik.errors.category && <small>{formik.errors.category}</small>}
+            </span>
           </div>
           <div className="felid d-flex flex-column">
-            <input
-              type="datetime-local"
+            <Calendar
               id="date"
               name="date"
               placeholder="Date"
-              value={formik.values.date}
+              value={formik.values.date ? new Date(formik.values.date) : null}
+              onChange={(e) => formik.setFieldValue('date', e.value)}
               onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
+              dateFormat="dd/mm/yy"
+              showTime
             />
-            <span>{formik.errors.date && <small>{formik.errors.date}</small>}</span>
+            <span className="errorMsg">
+              {formik.errors.date && <small>{formik.errors.date.toString()}</small>}
+            </span>
           </div>
           <div className="felid d-flex flex-column">
-            <input
+            <InputText
               type="number"
               id="amount"
               name="amount"
               placeholder="Amount"
-              value={formik.values.amount}
+              value={formik.values.amount.toString()}
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
+              style={{ backgroundColor: '#e6f9f1' }}
             />
-            <span>{formik.errors.amount && <small>{formik.errors.amount}</small>}</span>
+            <span className="errorMsg">
+              {formik.errors.amount && <small>{formik.errors.amount}</small>}
+            </span>
           </div>
         </div>
         <button
@@ -88,10 +116,13 @@ const NewTransactionPage = () => {
             background: 'linear-gradient(90deg, #937bff, #d7a0f7)',
             color: 'white',
             boxShadow: '0 0 20px #d7a0f7'
-          }}>
+          }}
+          disabled={isSubmitDisabled}
+          onClick={SuccessAdding}>
           Add New Transaction
         </button>
       </form>
+      <ToastContainer />
     </div>
   );
 };
