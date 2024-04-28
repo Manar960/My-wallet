@@ -303,7 +303,7 @@ footer {
 }
 
 .button2 {
-  width: 100px;
+  width: 70px;
   padding: 10px;
   border: 0;
   position: relative;
@@ -311,6 +311,7 @@ footer {
   border-radius: 10rem;
   transition: all 0.02s;
   font-weight: bold;
+  font-size: 12px;
   color: rgb(37, 3, 91);
   box-shadow: 0 0px 7px -5px rgba(0, 0, 0, 0.5);
 }
@@ -362,7 +363,7 @@ footer {
 .tran {
   width: 460px;
   margin-left: 300px;
-  margin-top: 90px;
+  margin-top: 70px;
 }
 
 .transaction {

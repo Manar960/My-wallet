@@ -18,8 +18,14 @@ const TransactionService = {
     const transactionsData = this.getAllTransactions();
     return transactionsData.find((transaction) => transaction.id === id);
   },
-
+  getNextId(): number {
+    const transactionsData = this.getAllTransactions();
+    return transactionsData.length > 0
+      ? Math.max(...transactionsData.map((transaction) => transaction.id)) + 1
+      : 1;
+  },
   addTransaction(transaction: Transaction): void {
+    transaction.id = this.getNextId();
     const transactionsData = this.getAllTransactions();
     transactionsData.push(transaction);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(transactionsData));
@@ -29,6 +35,16 @@ const TransactionService = {
     let transactionsData = this.getAllTransactions();
     transactionsData = transactionsData.filter((transaction) => transaction.id !== id);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(transactionsData));
+  },
+  updateTransaction(updatedTransaction: Transaction): void {
+    let transactionsData = this.getAllTransactions();
+    const index = transactionsData.findIndex(
+      (transaction) => transaction.id === updatedTransaction.id
+    );
+    if (index !== -1) {
+      transactionsData[index] = updatedTransaction;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(transactionsData));
+    }
   }
 };
 

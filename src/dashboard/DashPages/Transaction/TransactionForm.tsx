@@ -1,14 +1,15 @@
 import { useFormik } from 'formik';
 import { BiSolidMessageSquareAdd } from 'react-icons/bi';
 import { TransactionSchema } from '../../../context/Transaction';
-import TransactionService from '../../transactions-api';
+import TransactionService, { Transaction } from '../../transactions-api';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Calendar } from 'primereact/calendar';
 import { InputText } from 'primereact/inputtext';
 import { Dropdown } from 'primereact/dropdown';
 import 'primereact/resources/primereact.min.css';
-import 'primeicons/primeicons.css';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const TransactionValue = {
   id: 0,
@@ -17,23 +18,35 @@ const TransactionValue = {
   date: '',
   amount: 0
 };
-const NewTransactionPage = () => {
+interface TransactionFormProps {
+  transaction?: Transaction;
+  onSaveButtonClicked: (transaction: Transaction) => void;
+}
+const TransactionForm: React.FC<TransactionFormProps> = ({ transaction, onSaveButtonClicked }) => {
+  const navigate = useNavigate();
   const formik = useFormik({
-    initialValues: TransactionValue,
+    initialValues: transaction || TransactionValue,
     validationSchema: TransactionSchema,
     onSubmit: (values) => {
-      const transactions = TransactionService.getAllTransactions();
-      const maxId =
-        transactions.length > 0
-          ? Math.max(...transactions.map((transaction) => transaction.id))
-          : 0;
-      const newTransaction = { ...values, id: maxId + 1 };
-      TransactionService.addTransaction(newTransaction);
-      formik.resetForm();
+      if (transaction) {
+        onSaveButtonClicked(values);
+        toast.success('Transaction Updated successfully');
+      } else {
+        TransactionService.addTransaction(values);
+        formik.resetForm();
+        toast.success('Transaction added successfully');
+        setTimeout(() => {
+          navigate('/transaction');
+        }, 2000);
+      }
     }
   });
+
+  useEffect(() => {
+    formik.resetForm({ values: transaction });
+  }, [transaction]);
+
   const isSubmitDisabled = !formik.dirty || !formik.isValid;
-  const SuccessAdding = () => toast.success('Added Successfully');
   const categories = ['Supermarket', 'Personal', 'Home', 'Entertainment'];
 
   return (
@@ -111,15 +124,14 @@ const NewTransactionPage = () => {
         </div>
         <button
           type="submit"
-          className="button d-inline-flex align-items-center justify-content-center mt-3 mb-4"
+          className="button d-inline-flex align-items-center justify-content-center mt-2 mb-4"
           style={{
             background: 'linear-gradient(90deg, #937bff, #d7a0f7)',
             color: 'white',
             boxShadow: '0 0 20px #d7a0f7'
           }}
-          disabled={isSubmitDisabled}
-          onClick={SuccessAdding}>
-          Add New Transaction
+          disabled={isSubmitDisabled}>
+          {transaction ? 'Update Transaction' : 'Add New Transaction'}
         </button>
       </form>
       <ToastContainer />
@@ -127,4 +139,4 @@ const NewTransactionPage = () => {
   );
 };
 
-export default NewTransactionPage;
+export default TransactionForm;

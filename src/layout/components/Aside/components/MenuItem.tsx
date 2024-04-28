@@ -10,5 +10,5 @@ const MenuItem = ({ icon, name, to }: { icon: string; name: string; to: string }
     </Link>
   );
 };
-
+ 
 export default MenuItem;

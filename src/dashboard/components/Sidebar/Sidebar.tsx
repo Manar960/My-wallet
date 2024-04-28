@@ -8,6 +8,7 @@ import { HiOutlineCalendar } from 'react-icons/hi';
 import { MdInsertChartOutlined } from 'react-icons/md';
 import { PiChatCircleDots } from 'react-icons/pi';
 import { TbSettingsExclamation } from 'react-icons/tb';
+import { HiMiniBars2 } from 'react-icons/hi2';
 
 
 const Sidebar = () => {
@@ -20,19 +21,32 @@ const Sidebar = () => {
     { icon: <TbSettingsExclamation />, label: 'Settings', to: '#' },
     { icon: <PiChatCircleDots />, label: 'Chat', to: '#' }
   ];
+  const openNav = () => {
+    const element = document.getElementById('sidebar');
+    if (element) {
+      element.style.width = '250px';
+    }
+  };
   return (
-    <aside className="sidebar bg-white position-relative d-flex align-items-start rounded-4 m-2 flex-column pe-4 shadow-sm">
-      <div className="header ps-4 my-3">
-        <img src={logo} alt="" />
-        <span className="description-header fw-bold">Finarium</span>
-      </div>
-      <main className="first-header">
-        {items.map((item, index) => (
-          <MenuItem key={index} icon={item.icon} name={item.label} to={item.to} />
-        ))}
-      </main>
-      <ButtomImg />
-    </aside>
+    <>
+      <span style={{ fontSize: '30px', cursor: 'pointer' }} onClick={openNav} className="d-lg-none">
+        <HiMiniBars2 />
+      </span>
+      <aside
+        id="sidebar"
+        className="sidebar bg-white position-relative d-flex align-items-start rounded-4 m-2 flex-column pe-4 shadow-sm d-md-none d-sm-none d-lg-block">
+        <div className="header ps-4 my-3">
+          <img src={logo} alt="" />
+          <span className="description-header fw-bold">Finarium</span>
+        </div>
+        <main className="first-header">
+          {items.map((item, index) => (
+            <MenuItem key={index} icon={item.icon} name={item.label} to={item.to} />
+          ))}
+        </main>
+        <ButtomImg />
+      </aside>
+    </>
   );
 };
 

@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import dayjs from 'dayjs';
 import { useTransactionsStore } from '../../../context/transactionsStore';
-import { UserData } from '../../../context/type';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import 'primereact/resources/primereact.min.css';
@@ -11,6 +10,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import TransactionService from '../../transactions-api';
 
 const TransactionsList = () => {
+
   const { data, loading, error, setData, setLoading, setError } = useTransactionsStore();
 
   useEffect(() => {
@@ -28,6 +28,9 @@ const TransactionsList = () => {
   const handleClick = () => {
     navigate('/transaction/new');
   };
+  const handleEditButtonClick = (id: number) => {
+    navigate(`/transaction/${id}`); 
+  };
   const Removerecord = (transactionId: number) => {
     TransactionService.removeTransaction(transactionId);
     const updatedData = data.filter((transaction) => transaction.id !== transactionId);
@@ -39,7 +42,7 @@ const TransactionsList = () => {
 
   return (
     <div
-      className="card  my-5 shadow-sm"
+      className="card my-5 shadow-sm"
       style={{
         padding: '2rem',
         borderRadius: '10px',
@@ -52,10 +55,10 @@ const TransactionsList = () => {
         value={data}
         paginator
         rows={10}
+        className="datatable"
         rowsPerPageOptions={[10, 20, 25, 30]}
         tableStyle={{ minWidth: '60rem' }}
         style={{ paddingTop: '30px' }}>
-        <Column field="id" header="ID"></Column>
         <Column field="name" header="Name"></Column>
         <Column field="category" header="Category"></Column>
         <Column
@@ -68,9 +71,16 @@ const TransactionsList = () => {
         <Column
           field="id"
           body={(rowData) => (
-            <button className="button2 p-button-danger " onClick={() => Removerecord(rowData.id)}>
-              Remove
-            </button>
+            <>
+              <button
+                className="button2 p-button-danger me-3 "
+                onClick={() => handleEditButtonClick(rowData.id)}>
+                Edit
+              </button>
+              <button className="button2 p-button-danger " onClick={() => Removerecord(rowData.id)}>
+                Remove
+              </button>
+            </>
           )}
         />
       </DataTable>

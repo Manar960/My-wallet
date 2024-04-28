@@ -6,7 +6,7 @@ const Header = () => {
     const element = document.getElementById('mySidenav');
     if (element) {
       element.style.width = '250px';
-    }
+    } 
   };
   const { username } = useAppStore();
   return (
