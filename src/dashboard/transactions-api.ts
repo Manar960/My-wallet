@@ -45,6 +45,42 @@ const TransactionService = {
       transactionsData[index] = updatedTransaction;
       localStorage.setItem(STORAGE_KEY, JSON.stringify(transactionsData));
     }
+  },
+  filterTransactions(period: string): Transaction[] {
+    const transactions = this.getAllTransactions();
+    const currentDate = new Date();
+
+    switch (period) {
+      case 'today':
+        const today = new Date(
+          currentDate.getFullYear(),
+          currentDate.getMonth(),
+          currentDate.getDate()
+        );
+        return transactions.filter((transaction) => {
+          const transactionDate = new Date(transaction.date);
+          return transactionDate >= today;
+        });
+      case 'month':
+        const firstDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+        return transactions.filter((transaction) => {
+          const transactionDate = new Date(transaction.date);
+          return transactionDate >= firstDayOfMonth;
+        });
+      case 'year':
+        const firstDayOfYear = new Date(currentDate.getFullYear(), 0, 1);
+        return transactions.filter((transaction) => {
+          const transactionDate = new Date(transaction.date);
+          return transactionDate >= firstDayOfYear;
+        });
+      default:
+        return transactions;
+    }
+  },
+
+  getTotalBalance(period: string): number {
+    const filteredTransactions = this.filterTransactions(period);
+    return filteredTransactions.reduce((total, transaction) => total + transaction.amount, 0);
   }
 };
 

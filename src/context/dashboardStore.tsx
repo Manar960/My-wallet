@@ -1,13 +1,17 @@
-import { create } from 'zustand';
+import {create} from 'zustand';
 
-interface DateState {
-  selectedDate: string | null; 
+interface DashboardStore {
+  selectedDate: string | null;
   setSelectedDate: (date: string | null) => void;
+  period: string | null;
+  setPeriod: (period: string | null) => void;
 }
 
-const dashboardStore  = create<DateState>((set) => ({
+const useDashboardStore = create<DashboardStore>((set) => ({
   selectedDate: null,
-  setSelectedDate: (date) => set({ selectedDate: date })
+  setSelectedDate: (date) => set({ selectedDate: date }),
+  period: null,
+  setPeriod: (period) => set({ period })
 }));
 
-export default dashboardStore ;
+export default useDashboardStore;

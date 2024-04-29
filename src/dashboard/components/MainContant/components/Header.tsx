@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import useDateStore from '../../../../context/dashboardStore';
+import useDashboardStore from '../../../../context/dashboardStore';
 
 const Header = () => {
-  const setDate = useDateStore((state) => state.setSelectedDate);
+  const setDate = useDashboardStore((state) => state.setSelectedDate);
   const [selectedDate, setSelectedDate] = useState<string>(new Date().toISOString().slice(0, 10));
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const Header = () => {
         <h2 className="fw-bold">Dashboard</h2>
         <h6 className="pe-4 fs-6">
           <span className="Showing">Showing for: </span>{' '}
-          <input
+          {/* <input
             type="date"
             id="date"
             name="dateFilter"
@@ -34,7 +34,7 @@ const Header = () => {
               fontSize: '17px',
               backgroundColor: '#f7ebfe'
             }}
-          />
+          /> */}
         </h6>
       </div>
     </header>
