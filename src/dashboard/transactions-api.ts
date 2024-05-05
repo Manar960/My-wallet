@@ -51,7 +51,7 @@ const TransactionService = {
     const currentDate = new Date();
 
     switch (period) {
-      case 'today':
+      case 'Today':
         const today = new Date(
           currentDate.getFullYear(),
           currentDate.getMonth(),
@@ -61,13 +61,13 @@ const TransactionService = {
           const transactionDate = new Date(transaction.date);
           return transactionDate >= today;
         });
-      case 'month':
+      case 'Month':
         const firstDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
         return transactions.filter((transaction) => {
           const transactionDate = new Date(transaction.date);
           return transactionDate >= firstDayOfMonth;
         });
-      case 'year':
+      case 'Year':
         const firstDayOfYear = new Date(currentDate.getFullYear(), 0, 1);
         return transactions.filter((transaction) => {
           const transactionDate = new Date(transaction.date);
