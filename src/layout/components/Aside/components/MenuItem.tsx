@@ -1,13 +1,14 @@
-const MenuItem = ({ icon, name }: { icon: string; name: string }) => {
+import { Link } from 'react-router-dom';
+
+const MenuItem = ({ icon, name, to }: { icon: string; name: string; to: string }) => {
   return (
-    <a href="#" className="header-item d-flex p-3 ">
+    <Link to={to} className="header-item d-flex p-3 ">
       <div className="square text-center fw-bold d-flex justify-content-center align-items-center">
         <span className="fs-4">{icon}</span>
       </div>
-      <span className="header-item-label ps-3 d-block d-sm-none fs-6">{name}</span>
-    </a>
+      <span className="header-item-label ps-3 d-block  fs-6">{name}</span>
+    </Link>
   );
-};  
-
-
+};
+ 
 export default MenuItem;

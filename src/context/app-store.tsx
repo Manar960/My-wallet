@@ -1,30 +1,35 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+const CACHE_KEY = `username`;
 
-interface UsernameContextType {
-  username: string;
+interface AppContextType {
+  username: string | null;
   setUsername: (username: string) => void;
 }
 
-const UsernameContext = createContext<UsernameContextType | undefined>(undefined);
+const AppContext = createContext<AppContextType | undefined>(undefined);
 
-export const useUsername = () => {
-  const context = useContext(UsernameContext);
+export const useAppStore = () => {
+  const context = useContext(AppContext);
+
   if (!context) {
     throw new Error('useUsername must be used within a UsernameProvider');
   }
   return context;
 };
 
-interface UsernameProviderProps {
+interface AppStoreProviderProps {
   children: ReactNode;
 }
 
-export const UsernameProvider: React.FC<UsernameProviderProps> = ({ children }) => {
-  const [username, setUsername] = useState('');
+export const AppStoreProvider: React.FC<AppStoreProviderProps> = ({ children }) => {
+  const cachedName = sessionStorage.getItem(CACHE_KEY);
 
-  return (
-    <UsernameContext.Provider value={{ username, setUsername }}>
-      {children}
-    </UsernameContext.Provider>
-  );
+  const [username, setUsername] = useState(cachedName);
+
+  useEffect(() => {
+    if (username) sessionStorage.setItem(CACHE_KEY, username);
+    else sessionStorage.removeItem(CACHE_KEY);
+  }, [username]);
+
+  return <AppContext.Provider value={{ username, setUsername }}>{children}</AppContext.Provider>;
 };

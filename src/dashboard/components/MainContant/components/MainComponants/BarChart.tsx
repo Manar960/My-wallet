@@ -1,10 +1,20 @@
+import dayjs from 'dayjs';
+import img from '../../../../../assets/images/bar.png';
+import dashboardStore from '../../../../../context/dashboardStore';
+
 const BarChart = () => {
+  const selectedDate = dashboardStore((state) => state.selectedDate);
+  const formattedDate = selectedDate
+    ? dayjs(selectedDate).format('MM/DD/YYYY')
+    : dayjs().format('MM/DD/YYYY')
+
   return (
     <div className="container-fluid">
       <div className="row">
         <div className="col-lg-12">
-          <section className="column-container bg-white rounded-4 d-flex align-items-center justify-content-center overflow-hidden">
-            <img src="img/bar.png" alt="bar chart" />
+          <section className="column-container flex-column bg-white rounded-4 d-flex align-items-center justify-content-center overflow-hidden shadow-sm">
+            <h5 className="pt-5">Date is: {formattedDate}</h5>
+            <img src={img} alt="bar chart" className="pb-5" />
           </section>
         </div>
       </div>

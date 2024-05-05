@@ -1,13 +1,14 @@
-const MenuItem = ({ icon, name }: { icon: string; name: string }) => {
-  return (
-    <a href="#" className="header-item d-flex p-3 ">
-      <div className="square text-center fw-bold d-flex justify-content-center align-items-center">
-        <span>{icon}</span>
-      </div>
-      <span className="header-item-label ps-3">{name}</span>
-    </a>
-  );
-}; 
+import { Link } from 'react-router-dom';
 
+const MenuItem = ({ icon, name, to }: { icon: React.ReactNode; name: string; to: string }) => {
+  return (
+    <Link to={to} className="header-item d-flex p-3">
+        <span className="ms-2 d-flex align-item-start" style={{ fontSize: '26px'}}>
+          {icon}
+        </span>
+      <span className="header-item-label d-block ps-3">{name}</span>
+    </Link>
+  );
+};
 
 export default MenuItem;

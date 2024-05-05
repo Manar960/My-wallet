@@ -1,38 +1,26 @@
-import {
-  RouterProvider,
-  createBrowserRouter,
-} from 'react-router-dom';
-import HomePage from './Pages/HomePage/HomePage';
-import MasterLayout from './layout/MasterLayout';
-import { PageNotFound } from './Pages/PageNotFound';
-import MonthlyBudget from './Pages/MonthlyBudget/MonthlyBudget';
+import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom';
 import LoginPage from './Pages/LoginPage/LoginPage';
-import { UsernameProvider } from './context/app-store';
-const routers = createBrowserRouter([
-  {
-    path: '/',
-    element: <MasterLayout />,
-    children: [
-      {
-        index: true,
-        element: <HomePage />
-      },
-      {
-        path: '/monthly-Budget',
-        element: <MonthlyBudget />
-      }
-    ]
-  },
-  { path: '*', element: <PageNotFound /> },
-  { path: '/login', element: <LoginPage /> }
-]);
+import PrivateRoute from './PrivateRoute';
+import { useAppStore } from './context/app-store';
 
 const AppRoutes = () => {
+  const { username } = useAppStore();
+
   return (
-    <UsernameProvider>
-      <RouterProvider router={routers} />
-    </UsernameProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Outlet />}>
+          {username ? (
+            <Route path="/*" element={<PrivateRoute />} />
+          ) : (
+            <>
+              <Route path="login" element={<LoginPage />} />
+              <Route path="*" element={<Navigate to="/login" />} />
+            </>
+          )}
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
-
 export default AppRoutes;
