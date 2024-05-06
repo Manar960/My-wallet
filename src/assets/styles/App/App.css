@@ -71,7 +71,7 @@ body {
 
 .cal article {
   width: auto;
-  height: 250px;
+  height: 260px;
 }
 
 .first h5 {
@@ -120,14 +120,13 @@ body {
 }
 
 .column-container {
-  height: 92%;
+  height: 100%;
   margin-right: 25px;
   margin-top: 20px;
 }
-.column-container img {
-  padding: 10%;
-  height: auto;
-  width: 100%;
+.column-container .barChart {
+  padding-left: 10px;
+  padding-right: 10px;
   -o-object-fit: cover;
      object-fit: cover;
 }

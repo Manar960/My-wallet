@@ -84,7 +84,7 @@ body {
 .cal {
   article {
     width: auto;
-    height: 250px;
+    height: 260px;
   }
 }
 .first {
@@ -139,13 +139,12 @@ body {
   }
 }
 .column-container {
-  height: 92%;
+  height: 100%;
   margin-right: 25px;
   margin-top: 20px;
-  & img {
-    padding: 10%;
-    height: auto;
-    width: 100%;
+  & .barChart {
+    padding-left: 10px;
+    padding-right: 10px;
     object-fit: cover;
   }
 }
