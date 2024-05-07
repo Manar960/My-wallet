@@ -371,10 +371,22 @@ footer {
   }
 }
 .tran {
-  width: 460px;
-  margin-left: 300px;
+  min-width: 460px;
   margin-top: 70px;
 }
+.p-dialog-content,
+.p-dialog {
+  background: linear-gradient(45deg, #d2d9f4, #ffffff);
+}
+.p-paginator {
+  margin-top: 20px;
+}
+.p-dropdown .p-dropdown-label {
+  align-items: center;
+  justify-content: center;
+  padding-left: 8px;
+}
+
 .transaction {
   min-width: 450px;
   height: auto;
@@ -395,23 +407,23 @@ footer {
     margin-top: -65px;
     box-shadow: 0 0 20px #d7a0f7;
   }
-  .main {
-    display: flex;
-    flex-direction: column;
-    input {
-      min-width: 300px;
-      padding: 10px;
-      border-radius: 15px;
-      margin-bottom: 0;
-    }
-    .errorMsg {
-      color: red;
-      font-size: 0.8rem;
-      margin-left: 8px;
-      margin-bottom: 0;
-    }
-    .felid {
-      margin-bottom: 27px;
-    }
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  input {
+    min-width: 300px;
+    padding: 10px;
+    border-radius: 15px;
+    margin-bottom: 0;
+  }
+  .errorMsg {
+    color: red;
+    font-size: 0.8rem;
+    margin-left: 8px;
+    margin-bottom: 0;
+  }
+  .felid {
+    margin-bottom: 20px;
   }
 }

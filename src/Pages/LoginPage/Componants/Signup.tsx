@@ -11,7 +11,7 @@ const Signup = () => {
         <input type="email" placeholder="Email" />
         <input type="password" placeholder="Password" />
         <button>Sign Up</button>
-        <div className="social-icons mt-3 " style={{ fontSize: '25px' }}>
+        <div className="social-icons mt-1 " style={{ fontSize: '25px' }}>
           <FaFacebook style={{ color: '#1877F2', marginRight: '10px' }} />
           <LuInstagram style={{ color: '#F56040', marginRight: '10px' }} />
           <FaSquareXTwitter />

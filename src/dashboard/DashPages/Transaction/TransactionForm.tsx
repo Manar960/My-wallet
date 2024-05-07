@@ -1,6 +1,6 @@
 import { useFormik } from 'formik';
 import { BiSolidMessageSquareAdd } from 'react-icons/bi';
-import { TransactionSchema } from '../../../context/Transaction';
+import { TransactionSchema } from '../../../context/AppSchema';
 import TransactionService, { Transaction } from '../../transactions-api';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -83,7 +83,7 @@ const TransactionForm: React.FC<TransactionFormProps> = ({ transaction, onSaveBu
                 height: '47px',
                 borderRadius: '15px',
                 alignItems: 'center',
-                backgroundColor: '#e6f9f1',
+                backgroundColor: '#d2d9f4',
                 paddingLeft: '10px'
               }}
             />
@@ -115,7 +115,7 @@ const TransactionForm: React.FC<TransactionFormProps> = ({ transaction, onSaveBu
               value={formik.values.amount.toString()}
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
-              style={{ backgroundColor: '#e6f9f1' }}
+              style={{ backgroundColor: '#d2d9f4' }}
             />
             <span className="errorMsg">
               {formik.errors.amount && <small>{formik.errors.amount}</small>}

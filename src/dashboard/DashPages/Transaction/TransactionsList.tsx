@@ -8,9 +8,10 @@ import 'primereact/resources/themes/lara-light-green/theme.css';
 import 'primeicons/primeicons.css';
 import { Navigate, useNavigate } from 'react-router-dom';
 import TransactionService from '../../transactions-api';
+import Authorize from '../../../Authinticate';
+import { useAppStore } from '../../../context/app-store';
 
 const TransactionsList = () => {
-
   const { data, loading, error, setData, setLoading, setError } = useTransactionsStore();
 
   useEffect(() => {
@@ -29,7 +30,7 @@ const TransactionsList = () => {
     navigate('/transaction/new');
   };
   const handleEditButtonClick = (id: number) => {
-    navigate(`/transaction/${id}`); 
+    navigate(`/transaction/${id}`);
   };
   const Removerecord = (transactionId: number) => {
     TransactionService.removeTransaction(transactionId);
@@ -39,7 +40,8 @@ const TransactionsList = () => {
   if (loading) return <div>Loading...</div>;
 
   if (error) return <div>{error}</div>;
-
+const { userType } = useAppStore();
+const isAdmin = userType === 'Admin';
   return (
     <div
       className="card my-5 shadow-sm"
@@ -68,32 +70,38 @@ const TransactionsList = () => {
             <span>{dayjs(rowData.date).format('DD/MM/YYYY HH:mm:ss')}</span>
           )}></Column>
         <Column field="amount" header="Amount" className="py-3"></Column>
-        <Column
-          field="id"
-          body={(rowData) => (
-            <>
-              <button
-                className="button2 p-button-danger me-3 "
-                onClick={() => handleEditButtonClick(rowData.id)}>
-                Edit
-              </button>
-              <button className="button2 p-button-danger " onClick={() => Removerecord(rowData.id)}>
-                Remove
-              </button>
-            </>
-          )}
-        />
+        {isAdmin && (
+          <Column
+            field="id"
+            body={(rowData) => (
+              <>
+                <button
+                  className="button2 p-button-danger me-3 "
+                  onClick={() => handleEditButtonClick(rowData.id)}>
+                  Edit
+                </button>
+                <button
+                  className="button2 p-button-danger "
+                  onClick={() => Removerecord(rowData.id)}>
+                  Remove
+                </button>
+              </>
+            )}
+          />
+        )}
       </DataTable>
-      <div className="d-flex align-items-center justify-content-end me-4">
-        <button
-          className="button d-inline-flex align-items-center justify-content-center mt-4"
-          onClick={handleClick}>
-          Add New Transaction
-          <div className="hoverEffect position-absolute d-flex align-items-center justify-content-center">
-            <div></div>
-          </div>
-        </button>
-      </div>
+      <Authorize allowedRoles={['Admin']}>
+        <div className="d-flex align-items-center justify-content-end me-4">
+          <button
+            className="button d-inline-flex align-items-center justify-content-center mt-4"
+            onClick={handleClick}>
+            Add New Transaction
+            <div className="hoverEffect position-absolute d-flex align-items-center justify-content-center">
+              <div></div>
+            </div>
+          </button>
+        </div>
+      </Authorize>
     </div>
   );
 };
