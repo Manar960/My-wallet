@@ -5,7 +5,6 @@ import { BsThreeDots } from 'react-icons/bs';
 import { PiListDashesFill } from 'react-icons/pi';
 import { Dialog } from 'primereact/dialog';
 import TransactionForm from '../../../DashPages/Transaction/TransactionForm';
-import Authorize from '../../../../Authinticate';
 
 interface MenuItem {
   icon: React.ReactNode;
@@ -52,7 +51,7 @@ const Menu: React.FC = () => {
 
   return (
     <nav className="menu bg-white d-flex shadow-sm">
-      {menuItems.map((item, index) => (
+      {menuItems.map((item) => (
           <a
             href="#"
             onClick={item.onClick}

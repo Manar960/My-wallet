@@ -1,6 +1,5 @@
-import React from 'react';
 import { LuInstagram } from 'react-icons/lu';
-import { FaFacebook, FaTwitterSquare } from 'react-icons/fa';
+import { FaFacebook } from 'react-icons/fa';
 import { useAppStore } from '../../../context/app-store';
 import { useNavigate } from 'react-router-dom';
 import { Dropdown } from 'primereact/dropdown';

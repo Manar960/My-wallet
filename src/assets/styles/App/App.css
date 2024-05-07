@@ -363,6 +363,12 @@ footer {
   margin-top: 70px;
 }
 
+.p-dialog-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .p-dialog-content,
 .p-dialog {
   background: linear-gradient(45deg, #d2d9f4, #ffffff);
@@ -418,4 +424,12 @@ footer {
 }
 .main .felid {
   margin-bottom: 20px;
+}
+
+.p-button-text {
+  background: linear-gradient(45deg, #d2d9f4, #ffffff);
+  color: rgb(74, 4, 99);
+  border-radius: 20px;
+  padding: 5px;
+  margin: 5px;
 }/*# sourceMappingURL=App.css.map */
