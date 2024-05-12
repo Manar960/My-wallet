@@ -1,7 +1,7 @@
 import Profile from './components/Profile';
 import YourCard from './components/YourCard';
 import Receivers from './components/Receivers';
-import RecentActivity from './components/RecentActivity';
+import RecentActivity from './components/RecentTransactions';
 
 const Rightsidebar = () => {
   return (

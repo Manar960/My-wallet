@@ -82,8 +82,16 @@ const TransactionService = {
     const filteredTransactions = this.filterTransactions(period);
     return filteredTransactions.reduce((total, transaction) => total + transaction.amount, 0);
   },
-
-  
+  getMostRecentTransactions(): Transaction[] {
+    const transactionsData = this.getAllTransactions();
+    const sortedTransactions = transactionsData.sort((a, b) => b.id - a.id);
+    return sortedTransactions.slice(0, 5);
+  },
+  getTopTransactionsByAmount(): Transaction[] {
+    const transactionsData = this.getAllTransactions();
+    const sortedTransactions = transactionsData.sort((a, b) => b.amount - a.amount); 
+    return sortedTransactions.slice(0, 5); 
+  }
 };
 
 export default TransactionService;
