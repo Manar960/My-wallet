@@ -90,14 +90,7 @@
   }
 
   input {
-    background-color: #eee;
-    border: none;
-    margin: 8px 0;
-    padding: 10px 15px;
     font-size: 13px;
-    border-radius: 8px;
-    width: 100%;
-    outline: none;
   }
 }
 
@@ -173,7 +166,7 @@
   transform: translateX(0);
   transition: all 0.6s ease-in-out;
 }
-.mobile-singup{
+.mobile-singup {
   display: none;
 }
 .container.active .toggle {
@@ -273,11 +266,11 @@
       padding-left: 20px;
     }
   }
-  .mobile-singup{
+  .mobile-singup {
     display: block;
     flex-direction: column;
     text-align: center;
-    button{
+    button {
       background-color: transparent;
       border-color: #ea8cd7;
       font-size: 10px;

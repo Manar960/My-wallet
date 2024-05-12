@@ -81,7 +81,9 @@ const TransactionService = {
   getTotalBalance(period: string): number {
     const filteredTransactions = this.filterTransactions(period);
     return filteredTransactions.reduce((total, transaction) => total + transaction.amount, 0);
-  }
+  },
+
+  
 };
 
 export default TransactionService;

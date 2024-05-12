@@ -6,3 +6,8 @@ export const TransactionSchema = Yup.object({
   date: Yup.string().required('Date is required'),
   amount: Yup.number().required('Amount is required').positive('Amount must be positive')
 });
+export const LoginSchema = Yup.object({
+  name: Yup.string().required('Name is required'),
+  UserType: Yup.string().required('Please choose one of these choice ')
+});
+

@@ -5,7 +5,7 @@ import RecentActivity from './components/RecentActivity';
 
 const Rightsidebar = () => {
   return (
-    <aside className="second-sidebar shadow-sm" style={{ overflowY: 'auto', height: '100vh' }}>
+    <aside className="second-sidebar shadow-sm" style={{ overflowY: 'auto', height: '100vh', }}>
       <Profile />
       <main>
         <YourCard />

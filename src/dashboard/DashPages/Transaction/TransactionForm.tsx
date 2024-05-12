@@ -1,6 +1,6 @@
 import { useFormik } from 'formik';
 import { BiSolidMessageSquareAdd } from 'react-icons/bi';
-import { TransactionSchema } from '../../../context/Transaction';
+import { TransactionSchema } from '../../../context/AppSchema';
 import TransactionService, { Transaction } from '../../transactions-api';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -10,6 +10,7 @@ import { Dropdown } from 'primereact/dropdown';
 import 'primereact/resources/primereact.min.css';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import CategoriesService from '../../../Categories/category-api';
 
 const TransactionValue = {
   id: 0,
@@ -41,14 +42,13 @@ const TransactionForm: React.FC<TransactionFormProps> = ({ transaction, onSaveBu
       }
     }
   });
- 
+
   useEffect(() => {
     formik.resetForm({ values: transaction });
   }, [transaction]);
 
   const isSubmitDisabled = !formik.dirty || !formik.isValid;
-  const categories = ['Supermarket', 'Personal', 'Home', 'Entertainment'];
-
+  const categories = CategoriesService.getAllCategories();
   return (
     <div className="tran d-inline-flex container-fluid">
       <form onSubmit={formik.handleSubmit} className="transaction card">
@@ -76,14 +76,17 @@ const TransactionForm: React.FC<TransactionFormProps> = ({ transaction, onSaveBu
               name="category"
               placeholder="Category"
               value={formik.values.category}
-              options={categories.map((category) => ({ label: category, value: category }))}
+              options={categories.map((category) => ({
+                label: category.name,
+                value: category.name
+              }))}
               onChange={(e) => formik.setFieldValue('category', e.value)}
               onBlur={formik.handleBlur}
               style={{
                 height: '47px',
                 borderRadius: '15px',
                 alignItems: 'center',
-                backgroundColor: '#e6f9f1',
+                backgroundColor: '#d2d9f4',
                 paddingLeft: '10px'
               }}
             />
@@ -115,7 +118,7 @@ const TransactionForm: React.FC<TransactionFormProps> = ({ transaction, onSaveBu
               value={formik.values.amount.toString()}
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
-              style={{ backgroundColor: '#e6f9f1' }}
+              style={{ backgroundColor: '#d2d9f4' }}
             />
             <span className="errorMsg">
               {formik.errors.amount && <small>{formik.errors.amount}</small>}

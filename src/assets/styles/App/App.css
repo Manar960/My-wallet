@@ -71,7 +71,7 @@ body {
 
 .cal article {
   width: auto;
-  height: 250px;
+  height: 260px;
 }
 
 .first h5 {
@@ -120,14 +120,13 @@ body {
 }
 
 .column-container {
-  height: 92%;
+  height: 100%;
   margin-right: 25px;
   margin-top: 20px;
 }
-.column-container img {
-  padding: 10%;
-  height: auto;
-  width: 100%;
+.column-container .barChart {
+  padding-left: 10px;
+  padding-right: 10px;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -360,9 +359,29 @@ footer {
   }
 }
 .tran {
-  width: 460px;
-  margin-left: 300px;
+  min-width: 460px;
   margin-top: 70px;
+}
+
+.p-dialog-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.p-dialog-content,
+.p-dialog {
+  background: linear-gradient(45deg, #d2d9f4, #ffffff);
+}
+
+.p-paginator {
+  margin-top: 20px;
+}
+
+.p-dropdown .p-dropdown-label {
+  align-items: center;
+  justify-content: center;
+  padding-left: 8px;
 }
 
 .transaction {
@@ -386,22 +405,31 @@ footer {
   margin-top: -65px;
   box-shadow: 0 0 20px #d7a0f7;
 }
-.transaction .main {
+
+.main {
   display: flex;
   flex-direction: column;
 }
-.transaction .main input {
+.main input {
   min-width: 300px;
   padding: 10px;
   border-radius: 15px;
   margin-bottom: 0;
 }
-.transaction .main .errorMsg {
+.main .errorMsg {
   color: red;
   font-size: 0.8rem;
   margin-left: 8px;
   margin-bottom: 0;
 }
-.transaction .main .felid {
-  margin-bottom: 27px;
+.main .felid {
+  margin-bottom: 20px;
+}
+
+.p-button-text {
+  background: linear-gradient(45deg, #d2d9f4, #ffffff);
+  color: rgb(74, 4, 99);
+  border-radius: 20px;
+  padding: 5px;
+  margin: 5px;
 }/*# sourceMappingURL=App.css.map */

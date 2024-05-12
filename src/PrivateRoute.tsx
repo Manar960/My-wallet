@@ -4,6 +4,7 @@ import Dashboard from './dashboard/Dashboard';
 import TransactionsPage from './dashboard/DashPages/Transaction/TransactionsPage';
 import TransactionForm from './dashboard/DashPages/Transaction/TransactionForm';
 import EditTransactionPage from './dashboard/DashPages/Transaction/EditTransaction';
+import Categories from './Categories/Categories';
 
 const PrivateRoute = () => {
   return (
@@ -12,6 +13,7 @@ const PrivateRoute = () => {
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="transaction" element={<TransactionsPage />} />
         <Route path="transaction/:id" element={<EditTransactionPage />} />
+
         <Route
           path="transaction/new"
           element={
@@ -23,6 +25,7 @@ const PrivateRoute = () => {
             />
           }
         />
+        <Route path="categories" element={<Categories />} />
 
         <Route path="*" element={<Navigate to="/dashboard" />} />
       </Route>
