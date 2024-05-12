@@ -10,6 +10,7 @@ import { Dropdown } from 'primereact/dropdown';
 import 'primereact/resources/primereact.min.css';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import CategoriesService from '../../../Categories/category-api';
 
 const TransactionValue = {
   id: 0,
@@ -41,14 +42,13 @@ const TransactionForm: React.FC<TransactionFormProps> = ({ transaction, onSaveBu
       }
     }
   });
- 
+
   useEffect(() => {
     formik.resetForm({ values: transaction });
   }, [transaction]);
 
   const isSubmitDisabled = !formik.dirty || !formik.isValid;
-  const categories = ['Supermarket', 'Personal', 'Home', 'Entertainment'];
-
+  const categories = CategoriesService.getAllCategories();
   return (
     <div className="tran d-inline-flex container-fluid">
       <form onSubmit={formik.handleSubmit} className="transaction card">
@@ -76,7 +76,10 @@ const TransactionForm: React.FC<TransactionFormProps> = ({ transaction, onSaveBu
               name="category"
               placeholder="Category"
               value={formik.values.category}
-              options={categories.map((category) => ({ label: category, value: category }))}
+              options={categories.map((category) => ({
+                label: category.name,
+                value: category.name
+              }))}
               onChange={(e) => formik.setFieldValue('category', e.value)}
               onBlur={formik.handleBlur}
               style={{

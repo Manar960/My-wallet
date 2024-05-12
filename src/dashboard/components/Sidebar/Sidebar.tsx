@@ -2,20 +2,18 @@ import MenuItem from './components/MenuItem';
 import logo from '../../../assets/images/logo.png';
 import ButtomImg from '../../../layout/components/Aside/components/ButImg';
 import { BiTransferAlt } from 'react-icons/bi';
-import { HiOutlineCreditCard } from 'react-icons/hi';
 import { HiOutlineDocumentText } from 'react-icons/hi';
 import { HiOutlineCalendar } from 'react-icons/hi';
 import { MdInsertChartOutlined } from 'react-icons/md';
 import { PiChatCircleDots } from 'react-icons/pi';
 import { TbSettingsExclamation } from 'react-icons/tb';
-import { useState } from 'react';
-import { HiMiniBars2 } from 'react-icons/hi2';
+import { TbCategory2 } from 'react-icons/tb';
 
 const Sidebar = () => {
   const items = [
     { icon: <MdInsertChartOutlined />, label: 'Dashboard', to: '/dashboard' },
     { icon: <BiTransferAlt />, label: 'Transactions', to: '/transaction' },
-    { icon: <HiOutlineCreditCard />, label: 'Cards', to: '#' },
+    { icon: <TbCategory2 />, label: 'Categories', to: '/categories' },
     { icon: <HiOutlineDocumentText />, label: 'Reports', to: '#' },
     { icon: <HiOutlineCalendar />, label: 'Calendar', to: '#' },
     { icon: <TbSettingsExclamation />, label: 'Settings', to: '#' },

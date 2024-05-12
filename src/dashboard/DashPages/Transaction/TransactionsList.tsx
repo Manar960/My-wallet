@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import dayjs from 'dayjs';
 import { useTransactionsStore } from '../../../context/transactionsStore';
 import { DataTable } from 'primereact/datatable';
@@ -12,25 +12,37 @@ import Authorize from '../../../Authinticate';
 import { useAppStore } from '../../../context/app-store';
 import { Button } from 'primereact/button';
 import { Dialog } from 'primereact/dialog';
+import { Dropdown } from 'primereact/dropdown';
+import { FilterMatchMode } from 'primereact/api';
+import CategoriesService from '../../../Categories/category-api';
 
 const TransactionsList = () => {
-  const { data, loading, error, setData, setLoading, setError } = useTransactionsStore();
+  const navigate = useNavigate();
+  const { data, loading, error, setData, setLoading, setError, setCategory } =
+    useTransactionsStore();
   const [visible, setVisible] = useState(false);
-const [selectedTransaction, setSelectedTransaction] = useState<Transaction | null>(null);
-
+  const [selectedTransaction, setSelectedTransaction] = useState<Transaction | null>(null);
+  const { userType } = useAppStore();
+  const isAdmin = userType === 'Admin';
+  const [selectedCategory, setSelectedCategory] = useState<string>('');
+  const categories = CategoriesService.getAllCategories();
+  const [filters, setFilters] = useState({
+    global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    name: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
+    category: { value: selectedCategory, matchMode: FilterMatchMode.EQUALS }
+  });
   useEffect(() => {
     setLoading(true);
     try {
       const transactions = TransactionService.getAllTransactions();
       setData(transactions);
+      setCategory(selectedCategory);
       setLoading(false);
     } catch (err) {
       setError('An error occurred while fetching data from LocalStorage');
       setLoading(false);
     }
-  }, [setData, setLoading, setError]);
-
-  const navigate = useNavigate();
+  }, [setData, setLoading, setError, setSelectedCategory, selectedCategory, setCategory]);
 
   const handleClick = () => {
     navigate('/transaction/new');
@@ -82,8 +94,29 @@ const [selectedTransaction, setSelectedTransaction] = useState<Transaction | nul
     </div>
   );
 
-  const { userType } = useAppStore();
-  const isAdmin = userType === 'Admin';
+  const handleCategoryChange = (event: { value: string }) => {
+    const selectedCategory = event.value;
+    setSelectedCategory(selectedCategory);
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      category: { value: selectedCategory, matchMode: FilterMatchMode.EQUALS }
+    }));
+  };
+
+  const categoryFilterElement = (
+    <Dropdown
+      id="categoryName"
+      name="categoryName"
+      placeholder="Category"
+      value={selectedCategory}
+      options={categories.map((category) => ({
+        label: category.name,
+        value: category.name
+      }))}
+      onChange={handleCategoryChange}
+      style={{ minWidth: '0.5rem' }}
+    />
+  );
 
   return (
     <div
@@ -93,14 +126,30 @@ const [selectedTransaction, setSelectedTransaction] = useState<Transaction | nul
 
       <DataTable
         value={data}
+        stripedRows
         paginator
         rows={10}
+        filters={filters}
+        filterDisplay="row"
+        globalFilterFields={['category']}
         className="datatable"
         rowsPerPageOptions={[10, 20, 25, 30]}
         tableStyle={{ minWidth: '60rem' }}
         style={{ paddingTop: '30px' }}>
-        <Column field="name" header="Name" />
-        <Column field="category" header="Category" />
+        <Column
+          field="name"
+          header="Name"
+          filter
+          filterPlaceholder="Search by Name"
+          style={{ minWidth: '1rem' }}
+        />
+        <Column
+          field="category"
+          header="Category"
+          filter
+          filterPlaceholder="Search by category"
+          filterElement={categoryFilterElement}
+        />
         <Column
           field="date"
           header="Date"

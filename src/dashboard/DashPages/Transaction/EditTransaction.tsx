@@ -12,7 +12,7 @@ const EditTransactionPage = () => {
     setTimeout(() => {
       navigate('/transaction');
     }, 2000);
-  }; 
+  };  
 
   return <TransactionForm transaction={transaction} onSaveButtonClicked={onSaveButtonClicked} />;
 };
