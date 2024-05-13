@@ -2,22 +2,28 @@ import MenuItem from './components/MenuItem';
 import logo from '../../../assets/images/logo.png';
 import ButtomImg from '../../../layout/components/Aside/components/ButImg';
 import { BiTransferAlt } from 'react-icons/bi';
-import { HiOutlineDocumentText } from 'react-icons/hi';
-import { HiOutlineCalendar } from 'react-icons/hi';
 import { MdInsertChartOutlined } from 'react-icons/md';
-import { PiChatCircleDots } from 'react-icons/pi';
 import { TbSettingsExclamation } from 'react-icons/tb';
 import { TbCategory2 } from 'react-icons/tb';
+import { RiLogoutCircleLine } from 'react-icons/ri';
+import { useNavigate } from 'react-router-dom';
+import { useAppStore } from '../../../context/app-store';
 
 const Sidebar = () => {
+  const navigate = useNavigate();
+  const { setUsername, setUserType } = useAppStore();
+
+  const logout = () => {
+    setUsername('');
+    setUserType('');
+    navigate('/login');
+  };
   const items = [
     { icon: <MdInsertChartOutlined />, label: 'Dashboard', to: '/dashboard' },
     { icon: <BiTransferAlt />, label: 'Transactions', to: '/transaction' },
     { icon: <TbCategory2 />, label: 'Categories', to: '/categories' },
-    { icon: <HiOutlineDocumentText />, label: 'Reports', to: '#' },
-    { icon: <HiOutlineCalendar />, label: 'Calendar', to: '#' },
     { icon: <TbSettingsExclamation />, label: 'Settings', to: '#' },
-    { icon: <PiChatCircleDots />, label: 'Chat', to: '#' }
+    { icon: <RiLogoutCircleLine />, label: 'Logout', to: '/login', onClick: logout }
   ];
 
   return (
@@ -30,7 +36,13 @@ const Sidebar = () => {
       </div>
       <main className="first-header">
         {items.map((item, index) => (
-          <MenuItem key={index} icon={item.icon} name={item.label} to={item.to} />
+          <MenuItem
+            key={index}
+            icon={item.icon}
+            name={item.label}
+            to={item.to}
+            onClick={item.label === 'Logout' ? logout : undefined}
+          />
         ))}
       </main>
       <ButtomImg />
