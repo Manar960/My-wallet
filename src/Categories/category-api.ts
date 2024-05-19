@@ -1,6 +1,7 @@
 export interface Category {
   id: number;
   name: string;
+  icon:string;
 }
 
 const STORAGE_KEY = 'categories';

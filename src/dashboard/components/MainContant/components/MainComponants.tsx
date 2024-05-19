@@ -7,11 +7,11 @@ const Main = () => {
   return (
     <main>
       <div className="container-fluid">
-        <div className="row cal justify-content-between d-flex pe-4">
-          <div className="col-lg-6">
+        <div className=" row cal justify-content-between d-flex pe-4">
+          <div className="col">
           <FirstArticle/>
           </div>
-          <div className="col-lg-6">
+          <div className="col">
             <SecondArticle/>
           </div>
         </div>

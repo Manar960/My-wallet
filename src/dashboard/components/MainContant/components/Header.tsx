@@ -2,7 +2,7 @@ import { Dropdown } from 'primereact/dropdown';
 import { useEffect, useState } from 'react';
 import useDashboardStore from '../../../../context/dashboardStore';
 import TransactionService from '../../../transactions-api';
-
+ 
 const Header = () => {
   const periods = ['Today', 'Month', 'Year'];
   const [selectedPeriod, setSelectedPeriod] = useState<string>('');

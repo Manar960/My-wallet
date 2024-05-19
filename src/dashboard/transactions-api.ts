@@ -91,6 +91,20 @@ const TransactionService = {
     const transactionsData = this.getAllTransactions();
     const sortedTransactions = transactionsData.sort((a, b) => b.amount - a.amount); 
     return sortedTransactions.slice(0, 5); 
+  },
+  getTotalAmountByCategory(): Record<string, number> {
+    const transactions = this.getAllTransactions();
+    const totalAmountByCategory: Record<string, number> = {};
+    transactions.forEach((transaction) => {
+      const { category, amount } = transaction;
+      if (totalAmountByCategory[category]) {
+        totalAmountByCategory[category] += amount;
+      } else {
+        totalAmountByCategory[category] = amount;
+      }
+    });
+
+    return totalAmountByCategory;
   }
 };
 

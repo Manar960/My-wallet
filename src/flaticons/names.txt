@@ -1,0 +1,63 @@
+ Volume in drive C has no label.
+ Volume Serial Number is 000D-8848
+
+ Directory of C:\Users\ADawoud\Desktop\flaticons
+
+05/13/2024  04:02 PM    <DIR>          .
+05/13/2024  04:01 PM    <DIR>          ..
+05/13/2024  01:00 PM             1,815 001-school-bus.png
+05/13/2024  01:00 PM               602 002-calculator.png
+05/13/2024  01:00 PM             1,628 003-books.png
+05/13/2024  01:00 PM             2,336 004-delivery-truck.png
+05/13/2024  01:00 PM             2,278 005-payment-method.png
+05/13/2024  01:00 PM             4,467 006-money.png
+05/13/2024  01:00 PM             2,637 007-online-shop.png
+05/13/2024  01:00 PM             2,729 008-tablet.png
+05/13/2024  01:00 PM             3,383 009-online-shop-1.png
+05/13/2024  01:00 PM             2,606 010-online-store.png
+05/13/2024  01:00 PM             3,193 011-online-store-1.png
+05/13/2024  01:00 PM             1,392 012-bars-chart.png
+05/13/2024  01:00 PM             2,004 013-packing.png
+05/13/2024  01:00 PM             4,021 014-flats.png
+05/13/2024  01:00 PM             3,187 015-american-football.png
+05/13/2024  01:00 PM             2,962 016-food-cart.png
+05/13/2024  01:00 PM             2,665 017-pharmacy.png
+05/13/2024  01:00 PM             3,342 018-money-bag.png
+05/13/2024  01:00 PM             2,346 019-syrup.png
+05/13/2024  01:00 PM             3,268 020-money-bag-1.png
+05/13/2024  01:00 PM             1,965 021-cash.png
+05/13/2024  01:00 PM             2,878 022-piggy-bank.png
+05/13/2024  01:00 PM             3,987 023-calculator-1.png
+05/13/2024  01:00 PM             4,443 024-loan.png
+05/13/2024  01:00 PM             1,955 025-bank.png
+05/13/2024  01:00 PM             2,004 026-wallet.png
+05/13/2024  01:00 PM             2,973 027-money-1.png
+05/13/2024  01:00 PM             3,025 028-money-2.png
+05/13/2024  01:00 PM             2,652 029-gift.png
+05/13/2024  01:00 PM             2,762 030-piggy-bank-1.png
+05/13/2024  01:00 PM             2,239 031-money-jar.png
+05/13/2024  01:00 PM             1,765 032-wallet-1.png
+05/13/2024  01:00 PM             3,094 033-football.png
+05/13/2024  01:00 PM             3,367 034-cycling.png
+05/13/2024  01:00 PM             3,179 035-picnic-basket.png
+05/13/2024  01:00 PM             2,173 036-cola.png
+05/13/2024  01:00 PM             1,286 037-car.png
+05/13/2024  01:00 PM             2,007 038-taxi.png
+05/13/2024  01:00 PM             1,632 039-taxi-1.png
+05/13/2024  01:00 PM             3,775 040-family.png
+05/13/2024  01:00 PM             1,807 041-cat.png
+05/13/2024  01:00 PM             3,504 042-fashion.png
+05/13/2024  01:00 PM             2,557 043-love.png
+05/13/2024  01:00 PM             4,380 044-shopping-basket.png
+05/13/2024  01:00 PM             3,541 045-market.png
+05/13/2024  01:00 PM             1,736 046-gift-1.png
+05/13/2024  01:00 PM             3,668 047-grocery-cart.png
+05/13/2024  01:00 PM             3,027 048-house.png
+05/13/2024  01:00 PM             2,613 049-car-1.png
+05/13/2024  01:00 PM             3,990 050-merry-go-round.png
+05/13/2024  01:00 PM             2,574 051-cinema.png
+05/13/2024  01:00 PM             3,413 052-game-console.png
+05/13/2024  01:00 PM             2,145 053-payment.png
+05/13/2024  04:02 PM                 0 names.txt
+              54 File(s)        144,977 bytes
+               2 Dir(s)  235,607,834,624 bytes free

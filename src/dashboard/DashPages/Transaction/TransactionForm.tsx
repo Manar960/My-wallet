@@ -36,9 +36,7 @@ const TransactionForm: React.FC<TransactionFormProps> = ({ transaction, onSaveBu
         TransactionService.addTransaction(values);
         formik.resetForm();
         toast.success('Transaction added successfully');
-        setTimeout(() => {
-          navigate('/transaction');
-        }, 2000);
+        navigate('/transaction');
       }
     }
   });

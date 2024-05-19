@@ -22,7 +22,7 @@ const Sidebar = () => {
     { icon: <MdInsertChartOutlined />, label: 'Dashboard', to: '/dashboard' },
     { icon: <BiTransferAlt />, label: 'Transactions', to: '/transaction' },
     { icon: <TbCategory2 />, label: 'Categories', to: '/categories' },
-    { icon: <TbSettingsExclamation />, label: 'Settings', to: '#' },
+    { icon: <TbSettingsExclamation />, label: 'Settings', to: '/settings' },
     { icon: <RiLogoutCircleLine />, label: 'Logout', to: '/login', onClick: logout }
   ];
 

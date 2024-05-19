@@ -4,7 +4,9 @@ import Dashboard from './dashboard/Dashboard';
 import TransactionsPage from './dashboard/DashPages/Transaction/TransactionsPage';
 import TransactionForm from './dashboard/DashPages/Transaction/TransactionForm';
 import EditTransactionPage from './dashboard/DashPages/Transaction/EditTransaction';
-import Categories from './Categories/Categories';
+import MainCategoryPage from './Categories/MainCategoryPage';
+import SettingLayout from './dashboard/DashPages/Settings/SettingLayout';
+import Currency from './dashboard/DashPages/Settings/components/Currency';
 
 const PrivateRoute = () => {
   return (
@@ -13,7 +15,9 @@ const PrivateRoute = () => {
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="transaction" element={<TransactionsPage />} />
         <Route path="transaction/:id" element={<EditTransactionPage />} />
-
+        <Route path="settings" element={<SettingLayout />}>
+          <Route path="currency" element={<Currency />} />
+        </Route>
         <Route
           path="transaction/new"
           element={
@@ -25,8 +29,7 @@ const PrivateRoute = () => {
             />
           }
         />
-        <Route path="categories" element={<Categories />} />
-
+        <Route path="categories" element={<MainCategoryPage />} />
         <Route path="*" element={<Navigate to="/dashboard" />} />
       </Route>
     </Routes>

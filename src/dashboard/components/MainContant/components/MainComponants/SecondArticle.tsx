@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
 import Chart from 'react-apexcharts';
 import TransactionService, { Transaction } from '../../../../transactions-api';
+import useDashboardStore from '../../../../../context/dashboardStore';
 
 const SecondArticle = () => {
   const [categoryData, setCategoryData] = useState<{ label: string; total: number }[]>([]);
+  const selectedPeriod = useDashboardStore((state) => state.period);
 
   useEffect(() => {
     const calculateCategoryTotal = () => {
-      const transactions = TransactionService.getAllTransactions();
+      const transactions = TransactionService.filterTransactions(selectedPeriod || 'Month');
       const categoryMap = new Map<string, number>();
 
       transactions.forEach((transaction: Transaction) => {
@@ -30,8 +32,9 @@ const SecondArticle = () => {
     };
 
     calculateCategoryTotal();
-  }, []);
-const labels = categoryData.map((data) => data.label);
+  }, [selectedPeriod]);
+
+  const labels = categoryData.map((data) => data.label);
   const colors = ['#6f83ff', '#ffb0d0', '#ff8bb9', '#d2d9f4'];
 
   return (
@@ -42,31 +45,37 @@ const labels = categoryData.map((data) => data.label);
         </h5>
       </div>
       <div className="donut ">
-        <Chart
-          options={{
-            labels: labels,
-            colors: colors,
-            chart: {
-              animations: {
-                enabled: true,
-                easing: 'easeinout',
-                speed: 800,
-                animateGradually: {
+        {categoryData.length > 0 ? (
+          <Chart
+            options={{
+              labels: labels,
+              colors: colors,
+              chart: {
+                animations: {
                   enabled: true,
-                  delay: 150
-                },
-                dynamicAnimation: {
-                  enabled: true,
-                  speed: 350
+                  easing: 'easeinout',
+                  speed: 800,
+                  animateGradually: {
+                    enabled: true,
+                    delay: 150
+                  },
+                  dynamicAnimation: {
+                    enabled: true,
+                    speed: 350
+                  }
                 }
               }
-            },
-          }}
-          series={categoryData.map((data) => data.total)}
-          type="donut"
-          width="380"
-          height={215}
-        />
+            }}
+            series={categoryData.map((data) => data.total)}
+            type="donut"
+            width="380"
+            height={215}
+          />
+        ) : (
+          <div className="msg">
+            <p className="">There are no Expenses for {selectedPeriod}</p>
+          </div>
+        )}
       </div>
     </article>
   );

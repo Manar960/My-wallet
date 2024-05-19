@@ -1,48 +1,58 @@
-import { useEffect, useRef, useState } from 'react';
-import dayjs from 'dayjs';
-import { useTransactionsStore } from '../../../context/transactionsStore';
+import React, { useEffect, useState } from 'react';
+import { useSearchParams, useNavigate } from 'react-router-dom';
+import TransactionService, { Transaction } from '../../transactions-api';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import 'primereact/resources/primereact.min.css';
-import 'primereact/resources/themes/lara-light-green/theme.css';
-import 'primeicons/primeicons.css';
-import { useNavigate } from 'react-router-dom';
-import TransactionService, { Transaction } from '../../transactions-api';
-import Authorize from '../../../Authinticate';
-import { useAppStore } from '../../../context/app-store';
 import { Button } from 'primereact/button';
 import { Dialog } from 'primereact/dialog';
 import { Dropdown } from 'primereact/dropdown';
 import { FilterMatchMode } from 'primereact/api';
 import CategoriesService from '../../../Categories/category-api';
+import dayjs from 'dayjs';
+import Authorize from '../../../Authinticate';
+import { useAppStore } from '../../../context/app-store';
 
 const TransactionsList = () => {
   const navigate = useNavigate();
-  const { data, loading, error, setData, setLoading, setError, setCategory } =
-    useTransactionsStore();
+  const [selectedCategory, setSelectedCategory] = useState<string>('');
+  const [data, setData] = useState<Transaction[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+  const [filters, setFilters] = useState({
+    category: { value: '', matchMode: FilterMatchMode.EQUALS }
+  });
   const [visible, setVisible] = useState(false);
   const [selectedTransaction, setSelectedTransaction] = useState<Transaction | null>(null);
   const { userType } = useAppStore();
   const isAdmin = userType === 'Admin';
-  const [selectedCategory, setSelectedCategory] = useState<string>('');
-  const categories = CategoriesService.getAllCategories();
-  const [filters, setFilters] = useState({
-    global: { value: null, matchMode: FilterMatchMode.CONTAINS },
-    name: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
-    category: { value: selectedCategory, matchMode: FilterMatchMode.EQUALS }
-  });
+  const { sign } = useAppStore();
+
+  const [searchParams] = useSearchParams();
+
   useEffect(() => {
     setLoading(true);
-    try {
-      const transactions = TransactionService.getAllTransactions();
-      setData(transactions);
-      setCategory(selectedCategory);
-      setLoading(false);
-    } catch (err) {
-      setError('An error occurred while fetching data from LocalStorage');
-      setLoading(false);
-    }
-  }, [setData, setLoading, setError, setSelectedCategory, selectedCategory, setCategory]);
+    const fetchData = async () => {
+      try {
+        const transactions = await TransactionService.getAllTransactions();
+        setData(transactions);
+        const categoryParam = searchParams.get('category');
+        if (categoryParam) {
+          setSelectedCategory(categoryParam);
+          setFilters((prevFilters) => ({
+            ...prevFilters,
+            category: { value: categoryParam, matchMode: FilterMatchMode.EQUALS }
+          }));
+        }
+
+        setLoading(false);
+      } catch (error) {
+        setError('An error occurred while fetching data.');
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [searchParams]);
 
   const handleClick = () => {
     navigate('/transaction/new');
@@ -71,10 +81,6 @@ const TransactionsList = () => {
     setSelectedTransaction(null);
     setVisible(false);
   };
-
-  if (loading) return <div>Loading...</div>;
-
-  if (error) return <div>{error}</div>;
 
   const footerContent = (
     <div>
@@ -109,7 +115,7 @@ const TransactionsList = () => {
       name="categoryName"
       placeholder="Category"
       value={selectedCategory}
-      options={categories.map((category) => ({
+      options={CategoriesService.getAllCategories().map((category) => ({
         label: category.name,
         value: category.name
       }))}
@@ -117,6 +123,10 @@ const TransactionsList = () => {
       style={{ minWidth: '0.5rem' }}
     />
   );
+
+  if (loading) return <div>Loading...</div>;
+
+  if (error) return <div>{error}</div>;
 
   return (
     <div
@@ -155,7 +165,12 @@ const TransactionsList = () => {
           header="Date"
           body={(rowData) => <span>{dayjs(rowData.date).format('DD/MM/YYYY HH:mm:ss')}</span>}
         />
-        <Column field="amount" header="Amount" className="py-3" />
+        <Column
+          field="amount"
+          header="Amount"
+          className="py-3"
+          body={(rowData) => <span>{`${rowData.amount} ${sign??""}`}</span>}
+        />
         {isAdmin && (
           <Column
             field="id"

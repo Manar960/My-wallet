@@ -9,11 +9,8 @@ const EditTransactionPage = () => {
 
   const onSaveButtonClicked = (updatedTransaction: Transaction) => {
     TransactionService.updateTransaction(updatedTransaction);
-    setTimeout(() => {
-      navigate('/transaction');
-    }, 2000);
-  };  
-
+    navigate('/transaction');
+  }; 
   return <TransactionForm transaction={transaction} onSaveButtonClicked={onSaveButtonClicked} />;
 };
 
