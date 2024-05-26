@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import Chart from 'react-apexcharts';
-import TransactionService, { Transaction } from '../../../../transactions-api';
+import TransactionService, {
+  Transaction
+} from '../../../../DashPages/Transaction/transactions-api';
 import useDashboardStore from '../../../../../context/dashboardStore';
 
 const SecondArticle = () => {

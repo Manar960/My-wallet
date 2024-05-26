@@ -5,9 +5,9 @@ import RecentActivity from './components/RecentTransactions';
 
 const Rightsidebar = () => {
   return (
-    <aside className="shadow-sm " style={{ overflowY: 'auto', height: '100vh' }}>
-      <Profile />
+    <aside className="shadow-sm d-none d-sm-flex" style={{ overflowY: 'auto', height: '100vh' }}>
       <main>
+        <Profile />
         <YourCard />
         <Receivers />
         <RecentActivity />

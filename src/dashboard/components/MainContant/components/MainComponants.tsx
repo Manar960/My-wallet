@@ -8,15 +8,15 @@ const Main = () => {
     <main>
       <div className="container-fluid">
         <div className=" row cal justify-content-between d-flex pe-4">
-          <div className="col">
-          <FirstArticle/>
+          <div className="col-lg-6 ">
+            <FirstArticle />
           </div>
-          <div className="col">
-            <SecondArticle/>
+          <div className="col-lg-6 ">
+            <SecondArticle />
           </div>
         </div>
       </div>
-      <BarChart/>
+      <BarChart />
     </main>
   );
 };

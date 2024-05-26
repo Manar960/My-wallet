@@ -4,7 +4,7 @@ import Dashboard from './dashboard/Dashboard';
 import TransactionsPage from './dashboard/DashPages/Transaction/TransactionsPage';
 import TransactionForm from './dashboard/DashPages/Transaction/TransactionForm';
 import EditTransactionPage from './dashboard/DashPages/Transaction/EditTransaction';
-import MainCategoryPage from './Categories/MainCategoryPage';
+import MainCategoryPage from './dashboard/DashPages/Categories/MainCategoryPage';
 import SettingLayout from './dashboard/DashPages/Settings/SettingLayout';
 import Currency from './dashboard/DashPages/Settings/components/Currency';
 

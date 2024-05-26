@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
-import TransactionService, { Transaction } from '../../transactions-api';
+import TransactionService, { Transaction } from './transactions-api';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Button } from 'primereact/button';
 import { Dialog } from 'primereact/dialog';
 import { Dropdown } from 'primereact/dropdown';
 import { FilterMatchMode } from 'primereact/api';
-import CategoriesService from '../../../Categories/category-api';
+import CategoriesService from '../Categories/category-api';
 import dayjs from 'dayjs';
 import Authorize from '../../../Authinticate';
 import { useAppStore } from '../../../context/app-store';
@@ -141,8 +141,9 @@ const TransactionsList = () => {
         rows={10}
         filters={filters}
         filterDisplay="row"
+        scrollable
+        scrollHeight="400px"
         globalFilterFields={['category']}
-        className="datatable"
         rowsPerPageOptions={[10, 20, 25, 30]}
         tableStyle={{ minWidth: '60rem' }}
         style={{ paddingTop: '30px' }}>
@@ -169,7 +170,7 @@ const TransactionsList = () => {
           field="amount"
           header="Amount"
           className="py-3"
-          body={(rowData) => <span>{`${rowData.amount} ${sign??""}`}</span>}
+          body={(rowData) => <span>{`${rowData.amount} ${sign ?? ''}`}</span>}
         />
         {isAdmin && (
           <Column

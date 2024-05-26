@@ -1,6 +1,8 @@
 import Chart from 'react-apexcharts';
 
-import TransactionService, { Transaction } from '../../../../transactions-api';
+import TransactionService, {
+  Transaction
+} from '../../../../DashPages/Transaction/transactions-api';
 
 const BarChart = () => {
   const getMonthlyAmounts = (): number[] => {

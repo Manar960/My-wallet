@@ -3,11 +3,11 @@ import Rightsidebar from './components/Rightsidebar/Rightsidebar';
 import '../assets/styles/App/App.css';
 const Dashboard = () => {
   return (
-    <div className="d-flex ">
-      <div>
+    <div className="d-flex flex-row ">
+      <div >
         <DashboardPage />
       </div>
-      <div className=' bg-white'>
+      <div className=" bg-white">
         <Rightsidebar />
       </div>
     </div>

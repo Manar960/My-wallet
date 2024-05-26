@@ -1,7 +1,7 @@
 import { useFormik } from 'formik';
 import { BiSolidMessageSquareAdd } from 'react-icons/bi';
 import { TransactionSchema } from '../../../context/AppSchema';
-import TransactionService, { Transaction } from '../../transactions-api';
+import TransactionService, { Transaction } from './transactions-api';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Calendar } from 'primereact/calendar';
@@ -10,7 +10,7 @@ import { Dropdown } from 'primereact/dropdown';
 import 'primereact/resources/primereact.min.css';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import CategoriesService from '../../../Categories/category-api';
+import CategoriesService from '../Categories/category-api';
 
 const TransactionValue = {
   id: 0,

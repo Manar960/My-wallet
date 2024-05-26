@@ -7,7 +7,6 @@ import CategoriesService, { Category } from './category-api';
 import { ToastContainer, toast } from 'react-toastify';
 import { BiSolidMessageSquareAdd } from 'react-icons/bi';
 import { Dropdown } from 'primereact/dropdown';
-import icon from '../flaticons/001-school-bus.png';
 import { icons } from './FlatIcon';
 interface CategoryFormProps {
   category?: Category;

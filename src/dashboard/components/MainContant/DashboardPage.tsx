@@ -4,7 +4,7 @@ import Main from './components/MainComponants';
 
 const DashboardPage = () => {
   return (
-    <div style={{overflowY:"auto",height:"100vh"}}>
+    <div style={{ overflowY: 'auto', height: '100vh' }}>
       <Header />
       <Menu />
       <Main />

@@ -51,17 +51,17 @@ const Menu: React.FC = () => {
 
   return (
     <nav className="menu bg-white d-flex shadow-sm">
-      {menuItems.map((item,index) => (
-          <a
+      {menuItems.map((item, index) => (
+        <a
           key={index}
-            href="#"
-            onClick={item.onClick}
-            className="menu-item d-flex align-items-center flex-column justify-content-evenly text-decoration-none">
-            <div className="square fw-bold">
-              <span>{item.icon}</span>
-            </div>
-            <span className="menu-item-label">{item.label}</span>
-          </a>
+          href="#"
+          onClick={item.onClick}
+          className="menu-item d-flex align-items-center flex-column justify-content-evenly text-decoration-none">
+          <div className="square fw-bold">
+            <span>{item.icon}</span>
+          </div>
+          <span className="menu-item-label">{item.label}</span>
+        </a>
       ))}
       <Dialog
         visible={visible}

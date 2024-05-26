@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import TransactionForm from './TransactionForm';
-import TransactionService, { Transaction } from '../../transactions-api';
+import TransactionService, { Transaction } from './transactions-api';
 
 const EditTransactionPage = () => {
   const { id } = useParams();
@@ -10,7 +10,7 @@ const EditTransactionPage = () => {
   const onSaveButtonClicked = (updatedTransaction: Transaction) => {
     TransactionService.updateTransaction(updatedTransaction);
     navigate('/transaction');
-  }; 
+  };
   return <TransactionForm transaction={transaction} onSaveButtonClicked={onSaveButtonClicked} />;
 };
 

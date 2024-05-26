@@ -1,6 +1,6 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import { Button } from 'primereact/button';
-import TransactionService, { Transaction } from '../../../transactions-api';
+import TransactionService, { Transaction } from '../../../DashPages/Transaction/transactions-api';
 
 const RecentActivity = () => {
   const [showTopAmount, setShowTopAmount] = useState(false);
